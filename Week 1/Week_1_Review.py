@@ -12,21 +12,25 @@ first_name = "cho"
 #is any text inside single or double quotes, any text that a user enters, and any text in a text file. For example:
 greeting = "Hello"
 text = "23"
+
 # bool (Boolean Variable),
 # is a variable that stores either True or False.
 # A Boolean variable may not store any other value besides True or False. For example:
 found = True
 var_21390 = False
+
 # int (integer), is a whole number like 14.
 # An int may not have a fractional part or digits after the decimal point. For example:
 x = 14
 a = 2
 t = 54
+
 # float (integer with decimals),
 # is a number that may have a fractional part or digits after the decimal point like 7.51. For example:
 sample = 7.51
 sample_2 = 33.3333
 sample_3 = 1.234
+
 # lists (how to make lists),
 #is a collection of values. Each value in a list is called an element and is stored at a unique index. 
 # The primary purpose of a list is to efficiently store many elements.
@@ -36,6 +40,7 @@ colors = ["red", "blue", "yellow", "green"]
 samples = [6.5, 7.2, 7.0, 8.1, 7.2, 6.8, 6.8]
 # dict (dictionary),
 # is a collection of items. Each item is a key value pair.
+
 # The primary purpose of a dictionary is to enable a computer to find items very quickly.
 # In a Python program, we can create a dictionary by using curly braces ({ and }) and separating the items with commas (,).
 # For example:
