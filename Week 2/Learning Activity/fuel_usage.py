@@ -44,12 +44,12 @@ def main():
         # Call the miles_per_gallon function and store
         # the result in a variable named mpg.
         mpg = miles_per_gallon(start_miles, end_miles, amount_gallons)
-        print(f"{mpg:1f} Miles per gallon")
+        print(f"{mpg:.1f} Miles per gallon")
         # Call the lp100k_from_mpg function to convert the
         # miles per gallon to liters per 100 kilometers and
         # store the result in a variable named lp100k.
         lp100k = lp100k_from_mpg(mpg)
-        print(f"{lp100k:1f} per 100 kilometers")
+        print(f"{lp100k:.1f} per 100 kilometers")
         # Display the results for the user to see.
         pass
     
