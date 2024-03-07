@@ -42,6 +42,9 @@ During this prove milestone, you will write functions that generate sentences wi
 2) a noun
 3) a verb
 
+(Second part):
+* a prepositional phrase
+
 For example:
 
 * A cat laughed.
@@ -58,6 +61,14 @@ For this milestone, your program must include at least these five functions:
 * get_determiner
 * get_noun
 * get_verb
+
+(Second part):
+6) get_preposition
+7) get_prepositional_phrase
+You may add other functions if you find them helpful. 
+The get_preposition function must randomly choose a preposition from a list and return the randomly chosen preposition. 
+The get_prepositional_phrase function must make a prepositional phrase by calling the get_preposition, get_determiner, and 
+get_noun functions.
 
 You may add other functions if you want. 
 The functions get_determiner, get_noun, and get_verb, must randomly choose a word from a list of words and 
@@ -77,18 +88,16 @@ import random
 
 
 def main():
-
     tense = ["past", "present", "future"]
-
     for i in range(2):
         if i < 3:
             for j in range(len(tense)):
                 curTense = tense[j]
-                print(make_sentence(1, curTense))
+                print(f"{get_prepositional_phrase(1)} {make_sentence(1, curTense)} {get_prepositional_phrase(1)}")
         else:
             for j in range(len(tense)):
                 curTense = tense[j]
-                print(make_sentence(0, curTense))
+                print(f"{get_prepositional_phrase(0)} {make_sentence(0, curTense)} {get_prepositional_phrase(0)}")
     
 
     pass
@@ -207,9 +216,53 @@ def make_sentence(quantity, tense):
     sentence = (f"{words} {noun} {verb}")
     return sentence
 
+def get_preposition():
+    """Return a randomly chosen preposition
+    from this list of prepositions:
+    "about", "above", "across", "after", "along",
+    "around", "at", "before", "behind", "below",
+    "beyond", "by", "despite", "except", "for",
+    "from", "in", "into", "near", "of",
+    "off", "on", "onto", "out", "over",
+    "past", "to", "under", "with", "without"
+
+    Return: a randomly chosen preposition.
+    """
+    preposition = ["about", "above", "across", "after", "along",
+    "around", "at", "before", "behind", "below",
+    "beyond", "by", "despite", "except", "for",
+    "from", "in", "into", "near", "of",
+    "off", "on", "onto", "out", "over",
+    "past", "to", "under", "with", "without"]
+
+    preposition = random.choice(preposition)
+    return preposition
+
+def get_prepositional_phrase(quantity):
+    """Build and return a prepositional phrase composed
+    of three words: a preposition, a determiner, and a
+    noun by calling the get_preposition, get_determiner,
+    and get_noun functions.
+
+    Parameter
+    quantity: an integer that determines if the
+        determiner and noun in the prepositional
+        phrase returned from this function should
+        be single or pluaral.
+    Return: a prepositional phrase.
+    """
+    preposition = get_preposition()
+    words = get_determiner(quantity)
+    noun = get_noun(quantity)
+    prepositional_phrase = (f"{preposition} {words} {noun}")
+    return prepositional_phrase
+
+
 main()
 
 """
 if __name__ == "__main__":
     main()
+
+    prepositional_phrase = get_prepositional_phrase(quantity)
 """
