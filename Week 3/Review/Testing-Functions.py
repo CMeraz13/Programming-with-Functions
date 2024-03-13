@@ -142,14 +142,14 @@ In other words, one millionth of the expected value is the default tolerance. So
 The approx function has two parameters, rel and abs, that we can use to give approx a better 
 tolerance to use in its comparison. 
 For example, to test the math.sqrt function, we could write a test function like this:
-"""
+
 import math
 # Example 5
 
 def test_sqrt():
     assert math.sqrt(5) == approx(2.24, rel=0.01)
 
-"""
+
 Notice the rel named argument in line 4 of the previous example. 
 The rel named argument causes approx to compute the tolerance relative to the expected value. 
 This means that the assert statement in the previous example causes the computer to verify that the 
@@ -157,7 +157,7 @@ actual value returned from math.sqrt(5) is within 1% (0.01) of 2.24.
 When a programmer uses the rel named argument, the approx function uses code similar to example 6 to 
 determine if the actual and expected values are equal.
 
-"""
+
 
 # Example 6
 
@@ -173,19 +173,20 @@ else:
     return False
 
 """
+"""
 From lines 4 and 9 of example 6, we learn that approx will return True if the difference between the 
 actual value returned from math.sqrt(5) and the expected value is less than 0.0224 (2.24 * 0.01).
 
 We can also use the abs named argument to give approx a tolerance. 
 We can write a test for the math.sqrt function like this:
-"""
+
 
 # Example 7
 
 def test_sqrt():
     assert math.sqrt(5) == approx(2.24, abs=0.01)
 
-"""
+
 Notice the abs named argument in line 4 of the previous example. 
 The abs named argument causes the approx function to return True if the difference between the actual and 
 expected values is less than the number in abs (0.01 in the previous example). 
@@ -232,7 +233,7 @@ To adequately test this function, we should call it at least three times with th
 
 In a separate file named test_weather.py we write a test function named test_cels_from_fahr as follows:
 """
-
+"""
 # test_weather.py
 
 from weather import cels_from_fahr
@@ -240,11 +241,11 @@ from pytest import approx
 import pytest
 
 def test_cels_from_fahr():
-    """Test the cels_from_fahr function by calling it and
-    comparing the values it returns to the expected values.
-    Notice this test function uses pytest.approx to compare
-    floating-point numbers.
-    """
+    #Test the cels_from_fahr function by calling it and
+    #comparing the values it returns to the expected values.
+   # Notice this test function uses pytest.approx to compare
+    #floating-point numbers.
+    
     assert cels_from_fahr(-25) == approx(-31.66667)
     assert cels_from_fahr(0) == approx(-17.77778)
     assert cels_from_fahr(32) == approx(0)
@@ -253,7 +254,7 @@ def test_cels_from_fahr():
 # Call the main function that is part of pytest so that the
 # computer will execute the test functions in this file.
 pytest.main(["-v", "--tb=line", "-rN", __file__])
-
+"""
 """
 Notice in test_weather.py at lines 13–16 that the test function test_cels_from_fahr calls the program 
 function cels_from_fahr four times: once with a negative number, once with zero, and twice with positive numbers. 
@@ -344,5 +345,17 @@ During the next eight lessons in CSE 111, we will usually write one test functio
 is easy to test, meaning each function that does not get user input and does not print to a terminal window. 
 This means that you won’t write a test function for your program’s main function because main usually 
 gets user input and prints to a terminal window.
+
+
+Summary:
+
+During this lesson, you are learning to write test functions that automatically verify that program functions are working 
+correctly. In CSE 111, you will write test functions in a Python file that is separate from your program file. 
+At the top of the test file, you will import the program functions. 
+Then you will write one test function for each program function, except main. 
+Within a test function, you will write assert statements that compare the value returned from a program 
+function to the expected value. You will use a standard Python module named pytest to run your test functions. 
+When a test fails, you will use the output of pytest to help you find and fix the mistakes in your code.
+
 
 """
