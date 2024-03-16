@@ -28,8 +28,6 @@ def test_pressure_gain_from_water_height():
 def test_pressure_loss_from_pipe ():
     # This Function is used to test the pressure loss from pipes.
 
-    #assert isinstance(value, float) ""
-
     pressure_loss_result = pressure_loss_from_pipe(0.048692, 0.0, 0.018, 1.75)
     assert isinstance(pressure_loss_result, float), "Pressure loss from pipe function must return a float value."
 
