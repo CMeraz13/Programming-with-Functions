@@ -1,3 +1,21 @@
+"""
+Purpose:
+
+Improve your ability to use dictionaries in a Python program.
+
+Assignment:
+
+Write a program that stores information about vehicles in a Python dictionary. 
+Your program must ask a user to enter a vehicle identification number (VIN), 
+then find that VIN in the dictionary, and print the manufacturer, model, and color of the vehicle. Do the following:
+
+1) Download and save the vehicles.py Python file and then open it in VS Code.
+2) Using VS Code, read the comments in the program. 
+Then replace all three occurrences of the keyword pass with code that does what the comments describe.
+3) Run your program and verify that it works correctly.
+"""
+
+
 def main():
     # Create a dictionary that contains data about six vehicles.
     # The key for each vehicle in the dictionary is the vehicle's
