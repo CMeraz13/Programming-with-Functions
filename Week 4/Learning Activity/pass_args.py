@@ -76,6 +76,24 @@ def modify_args(n, alist):
     print(f"        After changing n and alist:  n {n}  alist {alist}")
 
 
+"""
+Examine the code and the output and answer the following three questions:
+    A) In main, there are two local variables named x and lx. 
+    At line 14, both of these local variables are passed to the modify_args function. 
+    After the call to modify_args finished, which of main’s two local variables did the modify_args function change?
+        A-1) x
+        B-2) lx  # This one.
+        C-3) both of them
+        D-4) neither of them
+    B) Why is the modify_args function NOT able to change main’s local variable x?
+        A-1) Because x is a number and therefore passed to a function by value # This one
+        B-2) Because x is a list and therefore passed to a function by reference
+    C) Why is the modify_args function able to change main’s local variable lx?
+        A-1) Because lx is a number and therefore passed to a function by value
+        B-2) Because lx is a list and therefore passed to a function by reference  # This one.
+        """
+
+
 # If this file was executed like this:
 # > python teach_solution.py
 # then call the main function. However, if this file
