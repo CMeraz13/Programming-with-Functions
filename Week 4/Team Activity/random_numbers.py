@@ -56,8 +56,41 @@ and then print the list of words.
 easier for the user, more elegant, or more fun. Be creative.
 """
 
+import random
+
+# Main Function
 def main():
-    numbers = []
+    # Creating a list
+    numbers = [16.2, 75.1, 52.3]
+
+    # printing the list
+    print(numbers)
+    
+    numbers_list = append_random_numbers
+    # Calls append_random_number function and adds a random number
+    append_random_numbers(numbers_list)
+
+    # prints numbers list with the added values
+    print(numbers)
+
+    # Calls append_random_number function again and adds a random number
+    append_random_numbers(numbers_list)
+
+    # prints numbers list with the added values
+    print(numbers)
+
+
 
 def append_random_numbers(numbers_list, quantity):
+
+    quantity = 1
+    new_number = random.uniform
+
+
+    quantity = round(quantity, 1)
+
+    append_random_numbers(numbers_list)
     
+    
+main()
+
