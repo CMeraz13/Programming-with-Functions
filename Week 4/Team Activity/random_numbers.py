@@ -81,6 +81,14 @@ def main():
     # prints numbers list with the added values
     print(numbers)
 
+    random_words = []
+
+    append_random_words(random_words, 5)
+    print(random_words)
+
+
+
+
 
 # Defining append random numbers using numbers list and quantity set to 1
 def append_random_numbers(numbers_list, quantity = 1):
@@ -95,6 +103,17 @@ def append_random_numbers(numbers_list, quantity = 1):
         # Appending the new number to numbers list to be called into Main function
         numbers_list.append(new_number)
     
+
+def append_random_words(words_list, quantity = 1):
+
+    word_list = ["Computer", "Yellow", "Bus", "Flower", "Barking", "Willingly", "House", "Boat", "Mud", "Butterfly", "Pasta"]
+
+    for word in range(quantity): 
+
+        random_word = random.choice(word_list)
+
+        words_list.append(random_word)
+
 
 # Running main function
 if __name__ == "__main__":
