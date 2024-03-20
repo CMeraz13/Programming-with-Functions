@@ -50,12 +50,15 @@ Note that the stretch challenges are optional.
 1) Add a function named append_random_words that meets the following criteria:
     A) Has two parameters: a list named words_list and an integer named quantity. The parameter quantity has a default value of 1
     B) Randomly selects quantity words from a list of words and appends the selected words at the end of words_list.
+
 2) Add statements in the main function that create a list of words, call the append_random_words function, 
 and then print the list of words.
+
 3) Add something or change something in your program that you think would make your program better, 
 easier for the user, more elegant, or more fun. Be creative.
-"""
 
+"""
+# importing the function random to use later in the code
 import random
 
 # Main Function
@@ -66,31 +69,34 @@ def main():
     # printing the list
     print(numbers)
     
-    numbers_list = append_random_numbers
     # Calls append_random_number function and adds a random number
-    append_random_numbers(numbers_list)
+    append_random_numbers(numbers, 1)
 
     # prints numbers list with the added values
     print(numbers)
 
     # Calls append_random_number function again and adds a random number
-    append_random_numbers(numbers_list)
+    append_random_numbers(numbers, 3)
 
     # prints numbers list with the added values
     print(numbers)
 
 
+# Defining append random numbers using numbers list and quantity set to 1
+def append_random_numbers(numbers_list, quantity = 1):
 
-def append_random_numbers(numbers_list, quantity):
+    # For loop to get a random generated number
+    for num in range(quantity):
 
-    quantity = 1
-    new_number = random.uniform
-
-
-    quantity = round(quantity, 1)
-
-    append_random_numbers(numbers_list)
+        # setting the new number to new number and having it roundly getting 
+        #a new number and rounding it to 1 decimal point
+        new_number = round(random.uniform(0, 100), 1)
     
+        # Appending the new number to numbers list to be called into Main function
+        numbers_list.append(new_number)
     
-main()
+
+# Running main function
+if __name__ == "__main__":
+    main()
 
