@@ -282,29 +282,41 @@ def make_periodic_table():
         ["Y",	"Yttrium",	88.90585],
         ["Yb",	"Ytterbium",	173.054],
         ["Zn",	"Zinc",	65.38],
-        ["Zr",	"Zirconium",	91.224],
+        ["Zr",	"Zirconium",	91.224]
     ]
+
+    # Returing function as periodic table list
+    return periodic_table_list
 
 # Function defining the main purpose of the code
 def main():
 
+    # Indexing values that will be used in the code
     symbols = 0
     name = 1
     atomic_mass = 2
 
     # Getting user input for later
-    chenical_fomula = str(input("Please enter the Chemical Formula for the Molecule: "))
-    mass_of_chemical_sample = str(input("Please enter the Mass of the Chemical Sample (Grams): "))
+    chemical_fomula = str(input("Please enter the Chemical Formula for the Molecule: "))
+    mass_of_chemical_sample = float(input("Please enter the Mass of the Chemical Sample (Grams): "))
 
-    make_periodic_table.append(chenical_fomula, mass_of_chemical_sample)
+    # Creating the variable that will hold the function make periodic table
+    periodic_table = make_periodic_table()
 
-    name_and_weight_index = make_periodic_table[1,2]
+    # For loop used to print out the intented values
+    for molecule in periodic_table:
 
-    for molecule in make_periodic_table:
+        # Grabbing the indexed information to use in print statment.
+        name_index = molecule[name]
+        weight_index = molecule[atomic_mass]
+
+        # Printing the indexed information formated
+        print(f"{name_index}: {weight_index}")
 
 
-        name_and_weight_index = molecule[name, atomic_mass]
-
-        print(f"{name_and_weight_index} \n")
-
-main()
+# If this file was executed like this:
+# > python teach_solution.py
+# then call the main function. However, if this file
+# was simply imported, then skip the call to main.
+if __name__ == "__main__":
+    main()

@@ -81,9 +81,13 @@ def main():
     # prints numbers list with the added values
     print(numbers)
 
+    # An empty list used to append random words
     random_words = []
 
+    # Appending 5 random words to the list
     append_random_words(random_words, 5)
+
+    # Printing out the 5 randomly selected words.
     print(random_words)
 
 
@@ -104,14 +108,19 @@ def append_random_numbers(numbers_list, quantity = 1):
         numbers_list.append(new_number)
     
 
+# Defining append random words using words list and quantity set to 1
 def append_random_words(words_list, quantity = 1):
 
+    # Creating a list with words that will be randomly pull from
     word_list = ["Computer", "Yellow", "Bus", "Flower", "Barking", "Willingly", "House", "Boat", "Mud", "Butterfly", "Pasta"]
 
+    # For loop used to to randomly pull words from the word list
     for word in range(quantity): 
 
+        # Randomly pulling words from list
         random_word = random.choice(word_list)
 
+        # Appending the random words selected to the empty list in main
         words_list.append(random_word)
 
 
