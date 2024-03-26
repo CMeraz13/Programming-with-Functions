@@ -43,8 +43,11 @@ and then modifies the list. Your program must do the following:
 def main():
 
     # Pulling the function Read list into a variable to be used later
-    print_list = read_list("Week_5\\Learning_Activity\\provinces.txt")
+    print_list = read_list("Week_5\Learning_Activity\provinces.txt")  # Apple
     
+    # Pulling the function Read list into a variable to be used later
+    # print_list = read_list("Week_5\\Learning_Activity\\provinces.txt") # For windows
+
     # Popping the first element
     print_list.pop(0)
 
