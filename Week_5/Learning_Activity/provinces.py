@@ -39,27 +39,51 @@ and then modifies the list. Your program must do the following:
 
 """
 
+# Function defining main
 def main():
 
-
-    print_list = read_list("provinces.txt")
+    # Pulling the function Read list into a variable to be used later
+    print_list = read_list("Week_5\\Learning_Activity\\provinces.txt")
     
+    # Popping the first element
+    print_list.pop(0)
+
+    # Popping our the last element
+    print_list.pop()
+
+    # Printing out print list
     print(print_list)
+    
+    for i in range(len(print_list)):
+        if print_list[i] == "AB":
+                print_list[i] == "Alberta"
+
+    count = print_list.count("Alberta")
+
+    # Printing out an empty line to create space
+    print()
+    print(count)
 
 
+# Function defining read list using provinces
 def read_list(provinces):
     
-
+    # Creating an empty list to append to later
     print_list = []
 
+    # Opening the file and setting it as province text
     with open(provinces, "rt") as province_text:
 
+        # For loop to grab each line province text
         for line in province_text:
-
+            
+            # Removing empty space from each line
             clean_line = line.strip()
 
-            province_text.append(clean_line)
+            # Appending each line to the empty list named print list
+            print_list.append(clean_line)
 
+    # Returing the print list
     return print_list
 
 
@@ -67,3 +91,4 @@ def read_list(provinces):
 # Call main to start this program.
 if __name__ == "__main__":
     main()
+
