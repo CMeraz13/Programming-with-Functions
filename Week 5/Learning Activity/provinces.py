@@ -39,3 +39,31 @@ and then modifies the list. Your program must do the following:
 
 """
 
+def main():
+
+
+    print_list = read_list("provinces.txt")
+    
+    print(print_list)
+
+
+def read_list(provinces):
+    
+
+    print_list = []
+
+    with open(provinces, "rt") as province_text:
+
+        for line in province_text:
+
+            clean_line = line.strip()
+
+            province_text.append(clean_line)
+
+    return print_list
+
+
+
+# Call main to start this program.
+if __name__ == "__main__":
+    main()
