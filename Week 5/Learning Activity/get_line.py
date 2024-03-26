@@ -1,6 +1,26 @@
 # Copyright 2020, Brigham Young University-Idaho. All rights reserved.
 
 """
+Checkpoint:
+
+Purpose:
+
+Improve your understanding of how to handle exceptions in a Python program.
+
+Assignment:
+
+Do the following:
+
+    1) Download and save the accidents.csv and get_line.py files in the same folder. 
+    get_line.py is a simple program that asks a user to input the name of a text file and a line number. 
+    Then it prints the text that is in the file on the requested line.
+    2) Open get_line.py in VS Code and notice the try block at line 10 and the five except blocks at lines 27–74, 
+    each handling a different type of exception.
+    3) Run the get_line.py program five times and enter the input shown in the Sample Run section below. 
+    For each of the first four times that you run the program, find the lines of code in get_line.py 
+    that handled the exception that was raised.
+
+
 This program asks the user for
 1) the name of a text file
 2) a line number
