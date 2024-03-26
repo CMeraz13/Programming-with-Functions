@@ -43,7 +43,7 @@ and then modifies the list. Your program must do the following:
 def main():
 
     # Pulling the function Read list into a variable to be used later
-    print_list = read_list("testtext.txt")
+    print_list = read_list("Week_5\\Learning_Activity\\provinces.txt")
     
     # Popping the first element
     print_list.pop(0)
@@ -91,33 +91,4 @@ def read_list(provinces):
 # Call main to start this program.
 if __name__ == "__main__":
     main()
-
-"""
-
-import os
-
-def main():
-    cwd = os.getcwd()
-    print(f"Current Working Directory: {cwd}")
-
-    filename = "provinces.txt"
-    print_list = read_list(filename)
-    print("Original list:", print_list)
-    
-    # Additional logic for modifications goes here
-
-def read_list(filename):
-    print_list = []
-    try:
-        with open(filename, "rt") as file:
-            for line in file:
-                print_list.append(line.strip())
-    except FileNotFoundError:
-        print(f"File not found: {filename}")
-        print_list = ["Error: File could not be read."]
-    return print_list
-
-if __name__ == "__main__":
-    main()
-    """
 
