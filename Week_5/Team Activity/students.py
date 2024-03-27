@@ -106,3 +106,52 @@ fix the mistake, and run the test_students.py file again until the test function
     How should your program handle these invalid I-Numbers?
     
 """
+
+import csv
+import re
+
+def main():
+
+    student_id = read_dictionary("student.csv")
+
+    student_input = input(int("Please Enter an I-Number(xxxxxxxxx): "))
+
+    if student_input in student_id:
+        
+        print(student_id[1])
+    else:
+        print("No such student")
+
+    print()
+
+
+def read_dictionary(filename, key_column_index):
+        """Read the contents of a CSV file into a compound
+        dictionary and return the dictionary.
+    
+        Parameters
+            filename: the name of the CSV file to read.
+            key_column_index: the index of the column
+                to use as the keys in the dictionary.
+        Return: a compound dictionary that contains
+            the contents of the CSV file.
+
+        """
+
+        student_dict = {}
+
+        with open(filename, "rt") as students_text:
+              
+            student_reader = csv.reader(students_text)
+
+            next(student_reader)
+
+            for i_student in student_reader:
+                
+                student_dict[i_student[0]] = i_student[1]
+
+
+        return student_dict
+
+
+
