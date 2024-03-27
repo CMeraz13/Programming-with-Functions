@@ -83,7 +83,7 @@ fix the mistake, and run the test_students.py file again until the test function
     > python test_students.py
         =================== test session starts ====================
         platform win32--Python 3.8.6, pytest-6.1.2, py-1.9.0, pluggy
-        rootdir: C:\Users\cse111\week05
+        rootdir: C:/Users/cse111/week05
         collected 1 item
     
         test_students.py::test_students PASSED                [100%]
@@ -104,7 +104,7 @@ fix the mistake, and run the test_students.py file again until the test function
     How should your program handle the dashes?
 4) Run your program and enter an I-Number with too few digits or too many digits. 
     How should your program handle these invalid I-Numbers?
-    
+
 """
 
 import csv
@@ -112,17 +112,30 @@ import re
 
 def main():
 
-    student_id = read_dictionary("student.csv", 0)
+    I_Number_INDEX = 0
+    I_Name_INDEX = 1
 
-    student_input = input(int("Please Enter an I-Number(xxxxxxxxx): "))
+    student_dict = read_dictionary("students.csv", I_Number_INDEX)
 
-    if student_input in student_id:
-        
-        print(student_id[1])
-    else:
-        print("No such student")
+    student_input = input("Please Enter an I-Number (xxxxxxxxx): ")
 
-    print()
+    if not student_input.isdigit():
+         print("Invalid character in I-Number")
+    else: 
+        if len(student_input) < 9:
+            print("Invalid I-Number: too few digits")
+        elif len(student_input) > 9:
+            print("Invalid I-Number: too many digits")
+        else:
+            if student_input not in student_dict:
+                print("No such student")
+                print("Please enter a valid I-Number")
+            else:
+
+                value = student_dict[student_input]
+                student_name = value[I_Name_INDEX]
+                
+                print(student_name)
 
 
 def read_dictionary(filename, key_column_index):
@@ -148,10 +161,17 @@ def read_dictionary(filename, key_column_index):
 
             for i_student in student_reader:
                 
-                student_dict[i_student[0]] = i_student[1]
+                key = i_student[key_column_index]
+
+                student_dict[key] = i_student
 
 
         return student_dict
 
 
-
+# If this file was executed like this:
+# > python teach_solution.py
+# then call the main function. However, if this file
+# was simply imported, then skip the call to main.
+if __name__ == "__main__":
+    main()
