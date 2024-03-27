@@ -26,6 +26,10 @@ This program asks the user for
 2) a line number
 and prints the text from that line of the file.
 """
+
+import csv
+
+
 def main():
     try:
         # Get a filename from the user.
