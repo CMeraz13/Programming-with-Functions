@@ -86,14 +86,14 @@ product name, and price as the value as shown in the following table.
     Because product numbers may appear multiple times in the request.csv file, 
     your program must not read the contents of request.csv into a dictionary.
 6) In your receipt.py program, write another function named main that does the following:
-    1) Calls the read_dictionary function and stores the compound dictionary in a variable named products_dict.
-    2) Prints the products_dict.
-    3) Opens the request.csv file for reading.
-    4) Skips the first line of the request.csv file because the first line contains column headings.
-    5) Uses a loop that reads and processes each row from the request.csv file. 
+    A) Calls the read_dictionary function and stores the compound dictionary in a variable named products_dict.
+    B) Prints the products_dict.
+    C) Opens the request.csv file for reading.
+    D) Skips the first line of the request.csv file because the first line contains column headings.
+    E) Uses a loop that reads and processes each row from the request.csv file. 
         Within the body of the loop, your program must do the following for each row:
-            A) Use the requested product number to find the corresponding item in the products_dict.
-            B) Print the product name, requested quantity, and product price.
+            A1) Use the requested product number to find the corresponding item in the products_dict.
+            B2) Print the product name, requested quantity, and product price.
 
 Because product number D083 appears twice in the request.csv file, 
 your program must not read the request.csv file into a dictionary. 

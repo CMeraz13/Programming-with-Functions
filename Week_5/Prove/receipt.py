@@ -111,3 +111,113 @@ should instead read and process each row similar to example 3 in the preparation
 Be certain to protect the call to main with an if statement as taught in the preparation content for week 3.
 
 """
+
+# Imported CSV to be used in code
+import csv
+
+# Function defining the main purpose of the code
+def main():
+
+
+        product_dict = read_dictionary("Week_5/Prove/products.csv", 0)
+
+        print(product_dict)
+
+        with open("request.csv", "rt") as request_text:
+
+            reader = csv.reader(request_text)
+
+            # Calling reader to skip the first line of the csv
+            next(reader)
+            
+            for line in reader:
+
+                list = line.split(',')
+
+                if list[0] in product_dict:
+
+                    product_name = product_dict[list[0]][1]
+
+                    request_quantity = list[1]
+
+                    product_price = product_dict[list[0]][2]
+
+                    print(product_name, request_quantity, product_price)                   
+
+"""
+    except FileNotFoundError as not_found_err:
+        # This code will be executed if the user enters
+        # the name of a file that doesn't exist.
+        print()
+        print(type(not_found_err).__name__, not_found_err, sep=": ")
+        print(f"The file {product_dict} doesn't exist.")
+        print("Run the program again and enter the" \
+                " name of an existing file.")
+
+    except PermissionError as perm_err:
+        # This code will be executed if the user enters the name
+        # of a file and doesn't have permission to read that file.
+        print()
+        print(type(perm_err).__name__, perm_err, sep=": ")
+        print(f"You don't have permission to read {product_dict}.")
+        print("Run the program again and enter the name" \
+                " of a file that you are allowed to read.")
+
+    except IndexError as index_err:
+        # This code will be executed if the user enters a valid
+        # integer for the line number, but the integer is greater
+        # than the number of lines in the file.
+        print()
+        print(type(index_err).__name__, index_err, sep=": ")
+        length = len(product_dict)
+        if product_dict < 0:
+            print(f"{product_dict} is a negative integer.")
+        else:
+            print(f"{product_dict} is greater than the number" \
+                    f" of lines in {product_dict}.")
+            print(f"There are only {length} lines in {product_dict}.")
+        print(f"Run the program again and enter a line number" \
+                f" between 1 and {length}.")
+                
+    except Exception as excep:
+        # This code will be executed if some
+        # other type of exception occurs.
+        print()
+        print(type(excep).__name__, excep, sep=": ")
+"""
+        
+# Function defining read dictionary
+def read_dictionary(filename, key_column_index):
+    """ Read the contents of a CSV file into a compound
+    dictionary and return the dictionary.
+
+    Parameters
+        filename: the name of the CSV file to read.
+        key_column_index: the index of the column
+            to use as the keys in the dictionary.
+    Return: a compound dictionary that contains
+        the contents of the CSV file.
+    """
+    products = {}
+
+
+    with open(filename, "rt") as products_text:
+
+        product_reader = csv.reader(products_text)
+        
+
+        next(product_reader)
+
+        for line in product_reader:
+
+            list = product_reader.split(',')
+            
+            key = list[key_column_index]
+            
+            products[key] = list
+            
+    
+    return products
+
+if __name__ == "__main__":
+    main()
