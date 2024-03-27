@@ -35,8 +35,10 @@ def main():
         # Get a filename from the user.
         filename = input("Enter the name of text file: ")
 
+        file_path = "Week_5/Learning_Activity/" + filename
+
         # Read the text file specified by the user into a list.
-        text_lines = read_list(filename)
+        text_lines = read_list(file_path)
 
         # Get a line number from the user.
         linenum = int(input("Enter a line number: "))
