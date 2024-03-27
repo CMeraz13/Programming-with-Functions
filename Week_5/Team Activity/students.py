@@ -112,7 +112,7 @@ import re
 
 def main():
 
-    student_id = read_dictionary("student.csv")
+    student_id = read_dictionary("student.csv", 0)
 
     student_input = input(int("Please Enter an I-Number(xxxxxxxxx): "))
 
