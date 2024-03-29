@@ -115,16 +115,19 @@ Be certain to protect the call to main with an if statement as taught in the pre
 # Imported CSV to be used in code
 import csv
 
+# Imported Datetime from Datetime to be used directly later in the code
 from datetime import datetime
 
+# Setting a current date and time to the current date and time
 current_date_and_time = datetime.now()
 
+# Printing out the current date and time
 print(f"{current_date_and_time:%A %I:%M %p}")
 
 # Function defining the main purpose of the code
 def main():
 
-
+    # 
     product_dict = read_dictionary("products.csv", 0)
 
     print(product_dict)
@@ -135,6 +138,7 @@ def main():
 
     tax = 0.06
 
+    discount_percent = 0.10
 
     with open("request.csv", "rt") as request_text:
 
@@ -170,29 +174,58 @@ def main():
                 print(f"{product_name}: {quantity} @ ${product_price:.2f}")
                    
 
-
-
-        print()
-
-        print(f"Number of Items: {number_of_items}")
-
-        subtotal = round(subtotal, 2)
-
-        print(f"Subtotal: {subtotal}")
-
-        sales_tax = subtotal * tax
-
-        sales_tax = round(sales_tax,2)
-
-        print(f"Sales Tax: {sales_tax}")
-
-        total = subtotal + sales_tax
-
-        total = round(total, 2)
-
-        print(f"Total: {total}")
+        day_of_the_week = current_date_and_time.weekday()
 
         print()
+
+        if day_of_the_week == 1 or day_of_the_week == 2:
+
+            print(f"Number of Items: {number_of_items}")
+
+            subtotal = round(subtotal, 2)
+
+            print(f"Subtotal: {subtotal}")
+
+            sales_tax = subtotal * tax
+
+            sales_tax = round(sales_tax,2)
+
+            print(f"Sales Tax: {sales_tax}")
+
+            discount = round(subtotal * discount_percent, 2)
+
+            print(f"Discount: {discount}")
+            
+            subtotal -= discount
+
+            total = subtotal + sales_tax
+
+            total = round(total, 2)
+
+            print(f"Total: {total}")
+
+            print()
+
+        else:
+            print(f"Number of Items: {number_of_items}")
+
+            subtotal = round(subtotal, 2)
+
+            print(f"Subtotal: {subtotal}")
+
+            sales_tax = subtotal * tax
+
+            sales_tax = round(sales_tax,2)
+
+            print(f"Sales Tax: {sales_tax}")
+
+            total = subtotal + sales_tax
+
+            total = round(total, 2)
+
+            print(f"Total: {total}")
+
+            print()
 
         print("Thank you for shopping at General Store Inc.")
 
