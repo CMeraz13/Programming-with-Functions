@@ -128,7 +128,6 @@ def main():
 
     product_dict = read_dictionary("products.csv", PRODUCT_NAME_INDEX)
 
-    print(product_dict)
 
     with open("request.csv", "rt") as request_text:
 
@@ -139,15 +138,15 @@ def main():
 
         for line in reader:
 
-            if line[REQUEST_PRODUCT_INDEX] in product_dict:
+            product_number, quantity = line
 
-                product_name = product_dict[PRODUCT_PRICE_INDEX]
+            if product_number in product_dict:
 
-                request_quantity = line[REQUEST_QUANTITY_INDEX]
+                product_name = product_dict[product_number][PRODUCT_PRICE_INDEX]
 
-                product_price = product_dict[PRODUCT_PRICE_INDEX]
+                product_price = float(product_dict[product_number][PRODUCT_PRICE_INDEX])
 
-                print(product_name, request_quantity, product_price)                   
+                print(f"Product: {product_name}, Quantity: {quantity}, Price per Unit: ${product_price}:.2f")                   
 
 """
     except FileNotFoundError as not_found_err:
