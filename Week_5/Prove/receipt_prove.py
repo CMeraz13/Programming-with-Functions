@@ -129,6 +129,13 @@ def main():
 
     print(product_dict)
 
+    number_of_items = 0
+
+    subtotal = 0.00
+
+    tax = 0.06
+
+
     with open("request.csv", "rt") as request_text:
 
         reader = csv.reader(request_text)
@@ -136,12 +143,19 @@ def main():
         # Calling reader to skip the first line of the csv
         next(reader)
 
-        print("Requested Items: ")
+        print()
+        print()
+        print()
+
+        print("General Store Inc. ")
 
         for line in reader:
 
             product_number = line[0]
             quantity = int(line[1])
+
+            number_of_items += quantity
+
 
             if product_number in product_dict:
 
@@ -151,8 +165,40 @@ def main():
 
                 product_price = float(product_info[2])
 
-                print(f"Product: {product_name}, Quantity: {quantity}, Price per Unit: ${product_price:.2f}")                   
+                subtotal += quantity * product_price
 
+                print(f"{product_name}: {quantity} @ ${product_price:.2f}")
+                   
+
+
+
+        print()
+
+        print(f"Number of Items: {number_of_items}")
+
+        subtotal = round(subtotal, 2)
+
+        print(f"Subtotal: {subtotal}")
+
+        sales_tax = subtotal * tax
+
+        sales_tax = round(sales_tax,2)
+
+        print(f"Sales Tax: {sales_tax}")
+
+        total = subtotal + sales_tax
+
+        total = round(total, 2)
+
+        print(f"Total: {total}")
+
+        print()
+
+        print("Thank you for shopping at General Store Inc.")
+
+        print(f"{current_date_and_time:%A %I:%M %p}")
+
+        print()
 """
     except FileNotFoundError as not_found_err:
         # This code will be executed if the user enters
