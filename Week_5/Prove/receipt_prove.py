@@ -285,6 +285,12 @@ def main():
             # Printing out an empty space for formatting
             print()
 
+    except KeyError as value_not_found_err:
+
+
+        print(type(value_not_found_err).__name__, value_not_found_err, sep=": ")
+        print()
+
     except FileNotFoundError as not_found_err:
         # This code will be executed if the user enters
         # the name of a file that doesn't exist.
