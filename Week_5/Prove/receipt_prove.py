@@ -127,106 +127,155 @@ print(f"{current_date_and_time:%A %I:%M %p}")
 # Function defining the main purpose of the code
 def main():
 
-    # 
+    # Setting Prodcut Dict to the function read dictionary
     product_dict = read_dictionary("products.csv", 0)
 
+    # Printing out Product Dict
     print(product_dict)
 
+    # Setting the variable Number of Items to 0 to be used later
     number_of_items = 0
 
+    # Setting a variable for Subtotal to 0 to be added to later
     subtotal = 0.00
 
+    # Setting the variable Tax to be used in the code later
     tax = 0.06
 
+    # Setting the Discount Percent Variable to 10 percent to be used later
     discount_percent = 0.10
 
+    # Opening the Request.csv and turning it to the variable Request Text
     with open("request.csv", "rt") as request_text:
 
+        # Reading the CSV file, Request text and putting it into Reader variable
         reader = csv.reader(request_text)
 
         # Calling reader to skip the first line of the csv
         next(reader)
 
+        # Printing empty space for formatting
         print()
         print()
         print()
 
+        # Printing the name of the store for the receipt
         print("General Store Inc. ")
 
+        # Using a For Loop that will iterate through each Line in Reader
         for line in reader:
 
+            # Setting the Product Number to the first index within Line
             product_number = line[0]
+
+            # Setting the quantity to the first index within Line and making it into an integer
             quantity = int(line[1])
 
+            # Creating a variable to add each quantity of items into Number of Items to be used later
             number_of_items += quantity
 
-
+            # If statement used to check the Product Number in the Product Dict
             if product_number in product_dict:
 
+                # Variable Product info set to the Product Dict index of Product Number
                 product_info = product_dict[product_number]
 
+                # Variable Product Name set to the Product Info index of One
                 product_name = product_info[1]
 
+                # Variable Price set to a float value from Product Info index of Two
                 product_price = float(product_info[2])
 
+                # Creating a variable of Subtotal that adds each quantity multiplied by their price
+                # for each iteration
                 subtotal += quantity * product_price
 
+                # Printing out the Product Name with their Quanatities and their Price
                 print(f"{product_name}: {quantity} @ ${product_price:.2f}")
                    
-
+        # Setting Variable Day of The Week to the Current Date and Time with method Weekday
         day_of_the_week = current_date_and_time.weekday()
 
+        # Printing an empty space for formatting
         print()
 
+        # If statement to check if its a Tuesday or Wednesday
         if day_of_the_week == 1 or day_of_the_week == 2:
 
+            # Printing out the Number of Items
             print(f"Number of Items: {number_of_items}")
 
+            # Rounding the Subtotal to the second decimal point
             subtotal = round(subtotal, 2)
 
+            # Printing the Subtotal
             print(f"Subtotal: {subtotal}")
 
+            # Setting Sales Tax equal to Subtotal * Tax
             sales_tax = subtotal * tax
 
+            # Rounding the Sales Tax to the second decimal point
             sales_tax = round(sales_tax,2)
 
+            # Printing out the Sales Tax
             print(f"Sales Tax: {sales_tax}")
 
+            # Setting Discount to a rounded total of the Subtotal multiplied by Discount Percent
+            # and setting it to the second decimal point
             discount = round(subtotal * discount_percent, 2)
 
+            # Printing out the Discount
             print(f"Discount: {discount}")
             
+            # Subtracting the discount from the subtotal
             subtotal -= discount
 
+            # Setting Total equal to the Subtotal plus the Sales Tax
             total = subtotal + sales_tax
 
+            # Rounding out Total to second decimal point
             total = round(total, 2)
 
+            # Printing out the Total
             print(f"Total: {total}")
 
+            # Printing out an empty space for formatting
             print()
 
+        # Else statement if the Day of The Week isnt Tuesday or Wednesday
         else:
+
+            # Printing out the Number of Items
             print(f"Number of Items: {number_of_items}")
 
+            # Rounding the Subtotal to the second decimal point
             subtotal = round(subtotal, 2)
 
+            # Printing the Subtotal
             print(f"Subtotal: {subtotal}")
 
+            # Setting Sales Tax equal to Subtotal * Tax
             sales_tax = subtotal * tax
 
+            # Rounding the Sales Tax to the second decimal point
             sales_tax = round(sales_tax,2)
 
+            # Printing out the Sales Tax
             print(f"Sales Tax: {sales_tax}")
 
+            # Setting the Total equal to Subtotal plus the Sales Tax
             total = subtotal + sales_tax
 
+            # Rounding Total to the second decimal point
             total = round(total, 2)
 
+            # Printing out the Total
             print(f"Total: {total}")
 
+            # Printing an empty space for formatting
             print()
 
+        # Printing out end message
         print("Thank you for shopping at General Store Inc.")
 
         print(f"{current_date_and_time:%A %I:%M %p}")
