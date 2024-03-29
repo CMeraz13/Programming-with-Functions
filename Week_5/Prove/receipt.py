@@ -118,31 +118,36 @@ import csv
 # Function defining the main purpose of the code
 def main():
 
+    PRODUCT_NAME_INDEX = 1
 
-        product_dict = read_dictionary("Week_5/Prove/products.csv", 0)
+    PRODUCT_PRICE_INDEX = 2
 
-        print(product_dict)
+    REQUEST_PRODUCT_INDEX = 0
 
-        with open("request.csv", "rt") as request_text:
+    REQUEST_QUANTITY_INDEX = 1
 
-            reader = csv.reader(request_text)
+    product_dict = read_dictionary("products.csv", PRODUCT_NAME_INDEX)
 
-            # Calling reader to skip the first line of the csv
-            next(reader)
-            
-            for line in reader:
+    print(product_dict)
 
-                list = line.split(',')
+    with open("request.csv", "rt") as request_text:
 
-                if list[0] in product_dict:
+        reader = csv.reader(request_text)
 
-                    product_name = product_dict[list[0]][1]
+        # Calling reader to skip the first line of the csv
+        next(reader)
 
-                    request_quantity = list[1]
+        for line in reader:
 
-                    product_price = product_dict[list[0]][2]
+            if line[REQUEST_PRODUCT_INDEX] in product_dict:
 
-                    print(product_name, request_quantity, product_price)                   
+                product_name = product_dict[PRODUCT_PRICE_INDEX]
+
+                request_quantity = line[REQUEST_QUANTITY_INDEX]
+
+                product_price = product_dict[PRODUCT_PRICE_INDEX]
+
+                print(product_name, request_quantity, product_price)                   
 
 """
     except FileNotFoundError as not_found_err:
@@ -210,11 +215,10 @@ def read_dictionary(filename, key_column_index):
 
         for line in product_reader:
 
-            list = product_reader.split(',')
+            key = line[key_column_index]
+
             
-            key = list[key_column_index]
-            
-            products[key] = list
+            products[key] = line
             
     
     return products
