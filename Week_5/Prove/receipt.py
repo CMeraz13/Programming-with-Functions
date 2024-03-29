@@ -118,16 +118,10 @@ import csv
 # Function defining the main purpose of the code
 def main():
 
-    PRODUCT_NAME_INDEX = 1
 
-    PRODUCT_PRICE_INDEX = 2
+    product_dict = read_dictionary("products.csv", 0)
 
-    REQUEST_PRODUCT_INDEX = 0
-
-    REQUEST_QUANTITY_INDEX = 1
-
-    product_dict = read_dictionary("products.csv", PRODUCT_NAME_INDEX)
-
+    print(product_dict)
 
     with open("request.csv", "rt") as request_text:
 
@@ -136,17 +130,22 @@ def main():
         # Calling reader to skip the first line of the csv
         next(reader)
 
+        print("Requested Items: ")
+
         for line in reader:
 
-            product_number, quantity = line
+            product_number = line[0]
+            quantity = int(line[1])
 
             if product_number in product_dict:
 
-                product_name = product_dict[product_number][PRODUCT_PRICE_INDEX]
+                product_info = product_dict[product_number]
 
-                product_price = float(product_dict[product_number][PRODUCT_PRICE_INDEX])
+                product_name = product_info[1]
 
-                print(f"Product: {product_name}, Quantity: {quantity}, Price per Unit: ${product_price}:.2f")                   
+                product_price = float(product_info[2])
+
+                print(f"Product: {product_name}, Quantity: {quantity}, Price per Unit: ${product_price:.2f}")                   
 
 """
     except FileNotFoundError as not_found_err:
