@@ -114,7 +114,11 @@ Be certain to protect the call to main with an if statement as taught in the pre
 
 # Imported CSV to be used in code
 import csv
+from datetime import datetime
 
+current_date_and_time = datetime.now()
+
+print(f"{current_date_and_time:%A %I:%M %p}")
 # Function defining the main purpose of the code
 def main():
 
