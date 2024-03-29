@@ -272,14 +272,16 @@ def main():
             # Printing out the Total
             print(f"Total: {total}")
 
-            # Printing an empty space for formatting
+            # Printing out an empty space for formatting
             print()
 
         # Printing out end message
         print("Thank you for shopping at General Store Inc.")
 
+        # Printing out the Current Date and Time
         print(f"{current_date_and_time:%A %I:%M %p}")
 
+        # Printing out an empty space for formatting
         print()
 """
     except FileNotFoundError as not_found_err:
@@ -335,25 +337,34 @@ def read_dictionary(filename, key_column_index):
     Return: a compound dictionary that contains
         the contents of the CSV file.
     """
+
+    # Creating an empty dictionary to be used later
     products = {}
 
-
+    # Opening the filename set to Products Text
     with open(filename, "rt") as products_text:
 
+        # Setting a Product Reader to read the CSV File of Product Text
         product_reader = csv.reader(products_text)
         
-
+        # Setting Product Reader to skip the first line
         next(product_reader)
 
+        # A For Loop that iterates each Line in Product reader
         for line in product_reader:
 
+            # Setting the Variable Key to Line with Key Column Index
             key = line[key_column_index]
 
-            
+            # Setting Product Key equal to Line and storing them in Products dictionary
             products[key] = line
             
-    
+    # Returns Prodcuts
     return products
 
+# If this file was executed like this:
+# > python receipt_prove.py
+# then call the main function. However if this file
+# was simply imported, then skip the call to main.
 if __name__ == "__main__":
     main()
