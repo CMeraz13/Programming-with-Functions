@@ -11,14 +11,22 @@ CSE 111 Proposal for a Student Chosen Program
 
 1. What is the title of your program?
 
+    Adventure game
+
 2. What real-world problem will your program address or help to solve?
 
+    The boredom and entertainment 
+
 3. What will you learn from developing this program?
+
+    How to better branch out and deal with User inputs and decision making
 
 4. What Python modules will your program use?
 
     (Some examples are: csv, datetime, functools, matplotlib, math,
     pandas, pytest, random, requests, and tkinter.)
+
+    Math, random, maybe datetime and pytest
 
 5. List the names of functions you will need?
 
@@ -27,11 +35,24 @@ CSE 111 Proposal for a Student Chosen Program
     Functions that get user input and print results are important and do
     useful work but are not easily reusable.)
 
+    Roll function (Used to get a random number to see if you pass checks)
+    Character Creation Function (Helps the user create a character)
+    Stat Function (Used to affect what the character can do(Will be used with the Roll Function))
+    Situtaion Function (Used to randomly give Situtaions)
+    Beginning Function (Used to randomly give a new begining to each run)
+
+
     (Remember also that it's hard to test functions that get user input
     and print results. It's easy to test functions that don't get user
     input and don't print results but instead have parameters and return
     a result. Therefore, you should write most of your program functions
     to have parameters and return a result.)
 
+
 6. List the names of the test functions you will write.
+
+Test Roll Function
+Test Stat Function
+Test Situtaion Function
+Test Beginning Function
 
