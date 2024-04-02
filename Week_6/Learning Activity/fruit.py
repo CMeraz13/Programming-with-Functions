@@ -56,3 +56,48 @@ def main():
     # Create and print a list named fruit.
     fruit_list = ["pear", "banana", "apple", "mango"]
     print(f"original: {fruit_list}")
+
+    # Reversing Fruit List using .reserse()
+    fruit_list.reverse()
+
+    # Printing out the reversed list
+    print(f"Reversed: {fruit_list}")
+
+    # Appending Orange to Fruit List
+    fruit_list.append("orange")
+
+    # Printing out the appened Fruit List
+    print(f"Append Orange: {fruit_list}")
+
+    # Inserting Cherry into Fruit List
+    fruit_list.insert(1, "cherry")
+
+    # Printing out the inserted Fruit List
+    print(f"Insert Cherry: {fruit_list}")
+
+    # Removing Banana from Fruit List
+    fruit_list.remove("banana")
+
+    # Printing out Fruit List with Banana removed
+    print(f"Remove Banana: {fruit_list}")
+
+    # Popping out Orange from Fruit List
+    fruit_list.pop(4)
+
+    # Printing out Fruit List with Orange Popped out
+    print(f"Pop Orange: {fruit_list}")
+
+    # Sorting out Fruit List
+    fruit_list.sort()
+
+    # Printing out the sorted Fruit List
+    print(f"Sorted: {fruit_list}")
+
+    # Clearing out Fruit list
+    fruit_list.clear()
+
+    # Printing out the Cleared List
+    print(f"Cleared: {fruit_list}")
+
+
+main()
