@@ -122,7 +122,7 @@ def populate_main_window(frm_main):
     Return: nothing
     """
     # Create a label that displays "Age:"
-    lbl_radius = Label(frm_main, text="Radius:")
+    lbl_radius  = Label(frm_main, text="Radius:")
 
     # Create an integer entry box where the user will enter her age.
     ent_radius = IntEntry(frm_main, width=4, lower_bound=12, upper_bound=90)
