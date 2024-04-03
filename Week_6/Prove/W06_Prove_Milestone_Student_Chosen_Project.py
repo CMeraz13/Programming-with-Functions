@@ -26,3 +26,35 @@ W06 Prove Milestone: Student Chosen Program:
             D) A description or list of the work that you finished on your program.
 
 """
+
+import math
+import random
+from datetime import datetime
+
+def main():
+    
+    print("Welcome to Fantasy Adventure: Demo!")
+
+
+    print()
+
+def Character_Stat():
+
+    # The purpose of this function is to determine what stats the players character will have
+
+    health = 100
+    endurance = 10
+    mana = 50
+    strength = 1
+    dexterity = 1
+    intelligence = 1
+    faith = 1
+
+    
+
+    print(f"Character stats: \nHealth: {health}\nEndurance: {endurance}\nMana: {mana}\nStrength: {strength}\nDexterity: {dexterity}\nIntelligence: {intelligence}\nFaith: {faith}")
+
+
+
+
+Character_Stat()
