@@ -175,7 +175,7 @@ def populate_main_window(frm_main):
 
             # Display the slowest and fastest benficial
             # heart rates for the user to see.
-            #lbl_slow.config(text=f"{slow:.0f}")
+            lbl_radius.config(text=f"{area:.0f}")
             #lbl_fast.config(text=f"{fast:.0f}")
 
             
@@ -192,15 +192,15 @@ def populate_main_window(frm_main):
     def clear():
         """Clear all the inputs and outputs."""
         btn_clear.focus()
-        ent_age.clear()
+        ent_radius.clear()
         lbl_radius.config(text="")
         lbl_fast.config(text="")
-        ent_age.focus()
+        ent_radius.focus()
 
     # Bind the calculate function to the age entry box so
     # that the computer will call the calculate function
     # when the user changes the text in the entry box.
-    ent_age.bind("<KeyRelease>", calculate)
+    ent_radius.bind("<KeyRelease>", calculate)
 
     # Bind the clear function to the clear button so
     # that the computer will call the clear function
@@ -208,7 +208,7 @@ def populate_main_window(frm_main):
     btn_clear.config(command=clear)
 
     # Give the keyboard focus to the age entry box.
-    ent_age.focus()
+    ent_radius.focus()
 
 
 # If this file is executed like this:
