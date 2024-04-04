@@ -36,10 +36,37 @@ def typingPrint(text):
     sys.stdout.flush()
     time.sleep(0.05)
 
+
+health = 100
+# player_health = health * (allocated_health_points * 10)
+
+#mana = 50
+#player_mana = mana * (allocated_mana_points * 3.2)
+
+strength = 1
+#player_strength = strength + allocated_strength_points
+
+dexterity = 1
+#player_dexterity = dexterity + allocated_dexterity_points
+
+intelligence = 1
+#player_intelligence = intelligence + allocated_intelligence_points
+
+faith = 1
+#player_faith = faith + allocated_faith_points
+
 def main():
     try:
         print()
         print()
+
+        char = Character_Stat()
+
+        health_answer = input("Wish to put points into health?: ")
+
+        if health_answer == "y":
+           
+
 
         typingPrint("Welcome to Fantasy Adventure: Demo!")
         time.sleep(2)
@@ -48,8 +75,8 @@ def main():
         time.sleep(2)
         print()
 
-        display_standard_stats = Character_Stat()
-        print(display_standard_stats)
+        #display_standard_stats = Character_Stat()
+        #print(display_standard_stats)
 
         typingPrint("\nEach character has 5 individual stats.")
         time.sleep(2)
@@ -95,23 +122,7 @@ def main():
         time.sleep(2)
         typingPrint("\nLets take a look at the Level 1: Character Stats!")
         time.sleep(2)
-        health = 100
-        # player_health = health * (allocated_health_points * 10)
-
-        #mana = 50
-        #player_mana = mana * (allocated_mana_points * 3.2)
-
-        strength = 1
-        #player_strength = strength + allocated_strength_points
-
-        dexterity = 1
-        #player_dexterity = dexterity + allocated_dexterity_points
-
-        intelligence = 1
-        #player_intelligence = intelligence + allocated_intelligence_points
-
-        faith = 1
-        #player_faith = faith + allocated_faith_points
+        
         
         print()
         print(f"Character stats: \nHealth: {health}\nStrength: {strength}\nDexterity: {dexterity}\nIntelligence: {intelligence}\nFaith: {faith}")
@@ -129,12 +140,25 @@ def main():
 
     print()
 
-def Character_Stat():
 
-    allocate_points = 37
+class Character:
 
-    while allocate_points != 0 or allocate_points = 37:
+    def __init__(self, health = 100, strength = 1, dexterity = 1, intelligence = 1, faith = 1):
+       self.health = health
+       self.strength = strength
+       self.dexterity = dexterity
+       self.intelligence = intelligence
+       self.faith = faith
+       self.allocate_points = 27
+
+    def display_stats(self):
+        print(f"Character Stats:\nHealth: {self.health}\nStrength: {self.strength}\nDexterity: {self.dexterity}\nIntelligence: {self.intelligence}\nFaith: {self.faith}\n")
+
+    def allocate_stat_points(self):
+       
         
+        
+
 
 def clearScreen():
   os.system("clear")
