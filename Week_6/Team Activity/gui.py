@@ -127,7 +127,7 @@ def populate_main_window(frm_main):
             area = math.pi * (radius ** 2)
             lbl_result.config(text=f"Area: {area:.2f}")
         except ValueError as e:
-            messagebox.showerror("Invalid Input", "Please enter a valid radius.")
+            #messagebox.showerror("Invalid Input", "Please enter a valid radius.")
             lbl_result.config(text="Area will be shown here")
             ent_radius.delete(0, tk.END)
 
