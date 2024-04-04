@@ -80,21 +80,11 @@ import math
 
 
 def main():
-    # Create the Tk root object.
     root = tk.Tk()
-
-    # Create the main window. In tkinter,
-    # a window is also called a frame.
     frm_main = Frame(root)
-    frm_main.master.title("Area of a Circle:")
+    frm_main.master.title("Area of a Circle")
     frm_main.pack(padx=4, pady=3, fill=tk.BOTH, expand=1)
-
-    # Call the populate_main_window function, which will add
-    # labels, text entry boxes, and buttons to the main window.
     populate_main_window(frm_main)
-
-    # Start the tkinter loop that processes user events
-    # such as key presses and mouse button clicks.
     root.mainloop()
 
 
@@ -114,103 +104,48 @@ def main():
 
 
 def populate_main_window(frm_main):
-    """Populate the main window of this program. In other words, put
-    the labels, text entry boxes, and buttons into the main window.
+    lbl_radius = Label(frm_main, text="Radius (1-100):")
+    ent_radius = IntEntry(frm_main, width=5, lower_bound=1, upper_bound=100)
+    lbl_result = Label(frm_main, text="Area will be shown here")
 
-    Parameter
-        frm_main: the main frame (window)
-    Return: nothing
-    """
-    # Create a label that displays "Age:"
-    lbl_radius  = Label(frm_main, text="Radius:")
-
-    # Create an integer entry box where the user will enter her age.
-    ent_radius = IntEntry(frm_main, width=4, lower_bound=12, upper_bound=90)
-
-    # Create a label that displays "years"
-    #lbl_age_units = Label(frm_main, text="years")
-
-    # Create a label that displays "Area:"
-    lbl_rates = Label(frm_main, text="Area:")
-
-    # Create labels that will display the results.
-    lbl_radius = Label(frm_main, width=3)
-    lbl_fast = Label(frm_main, width=3)
-    lbl_rate_units = Label(frm_main, text="(pi x r^2)")
-
-    # Create the Clear button.
     btn_clear = Button(frm_main, text="Clear")
 
-    # Layout all the labels, entry boxes, and buttons in a grid.
-    lbl_radius.grid(      row=0, column=0, padx=3, pady=3)
-    ent_radius.grid(      row=0, column=1, padx=3, pady=3)
-   # lbl_age_units.grid(row=0, column=2, padx=0, pady=3)
-
-    lbl_rates.grid(     row=1, column=0, padx=(30,3), pady=3)
-    lbl_radius.grid(      row=1, column=1, padx=3, pady=3)
-    lbl_fast.grid(      row=1, column=2, padx=3, pady=3)
-    lbl_rate_units.grid(row=1, column=3, padx=0, pady=3)
-
-    btn_clear.grid(row=2, column=0, padx=3, pady=3, columnspan=4, sticky="w")
-
+    lbl_radius.grid(row=0, column=0, padx=3, pady=2, sticky="e")
+    ent_radius.grid(row=0, column=1, padx=3, pady=2, sticky="w")
+    lbl_result.grid(row=1, column=0, columnspan=2, padx=3, pady=2)
 
     # This function will be called each time the user releases a key.
     def calculate(event):
         """Compute and display the user's slowest
         and fastest beneficial heart rates.
         """
+
         try:
-            # Get the user's age.
-            Radius = ent_radius.get()
-
-            # Compute the user's maximum heart rate.
-            #max_rate = 220 - age
-
-            # Compute the user's slowest and
-            # fastest beneficial heart rates.
-            #slow = max_rate * 0.65
-            #fast = max_rate * 0.85
-            
-            area = (math.pi * (Radius**2))
-
-            # Display the slowest and fastest benficial
-            # heart rates for the user to see.
-            lbl_radius.config(text=f"{area:.0f}")
-            #lbl_fast.config(text=f"{fast:.0f}")
-
-            
-
-        except ValueError:
-            # When the user deletes all the digits in the age
-            # entry box, clear the slowest and fastest labels.
-            lbl_radius.config(text="")
-            lbl_fast.config(text="")
-
+            radius = float(ent_radius.get())
+            if radius < 0:
+                raise ValueError("Radius cannot be negative.")
+            area = math.pi * (radius ** 2)
+            lbl_result.config(text=f"Area: {area:.2f}")
+        except ValueError as e:
+            messagebox.showerror("Invalid Input", "Please enter a valid radius.")
+            lbl_result.config(text="Area will be shown here")
+            ent_radius.delete(0, tk.END)
 
     # This function will be called each time
     # the user presses the "Clear" button.
     def clear():
         """Clear all the inputs and outputs."""
-        btn_clear.focus()
-        ent_radius.clear()
-        lbl_radius.config(text="")
-        lbl_fast.config(text="")
+        
+        ent_radius.delete(0, tk.END)
+        lbl_result.config(text="Area will be shown here")
         ent_radius.focus()
 
-    # Bind the calculate function to the age entry box so
-    # that the computer will call the calculate function
-    # when the user changes the text in the entry box.
+
     ent_radius.bind("<KeyRelease>", calculate)
-
-    # Bind the clear function to the clear button so
-    # that the computer will call the clear function
-    # when the user clicks the clear button.
     btn_clear.config(command=clear)
+    btn_clear.grid(row=2, column=0, columnspan=2, pady=5)
 
-    # Give the keyboard focus to the age entry box.
     ent_radius.focus()
-
-
 # If this file is executed like this:
 # > python heart_rate.py
 # then call the main function. However, if this file is simply
