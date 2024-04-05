@@ -37,35 +37,10 @@ def typingPrint(text):
     time.sleep(0.05)
 
 
-health = 100
-# player_health = health * (allocated_health_points * 10)
-
-#mana = 50
-#player_mana = mana * (allocated_mana_points * 3.2)
-
-strength = 1
-#player_strength = strength + allocated_strength_points
-
-dexterity = 1
-#player_dexterity = dexterity + allocated_dexterity_points
-
-intelligence = 1
-#player_intelligence = intelligence + allocated_intelligence_points
-
-faith = 1
-#player_faith = faith + allocated_faith_points
-
 def main():
     try:
         print()
         print()
-
-        char = Character_Stat()
-
-        health_answer = input("Wish to put points into health?: ")
-
-        if health_answer == "y":
-           
 
 
         typingPrint("Welcome to Fantasy Adventure: Demo!")
@@ -120,13 +95,19 @@ def main():
         time.sleep(2)
         typingPrint("\nyour character will do and how much 'Holy Resistance' will protect you from 'Holy Damage'.")
         time.sleep(2)
-        typingPrint("\nLets take a look at the Level 1: Character Stats!")
+        typingPrint("\n")
         time.sleep(2)
         
-        
-        print()
-        print(f"Character stats: \nHealth: {health}\nStrength: {strength}\nDexterity: {dexterity}\nIntelligence: {intelligence}\nFaith: {faith}")
+        player_char = Character()
+        player_char.display_stats()
 
+        player_char.allocate_stat_points()
+
+        print("great")
+        print()
+
+        player_char.display_stats()
+        
         print()
         print()
 
@@ -152,10 +133,38 @@ class Character:
        self.allocate_points = 27
 
     def display_stats(self):
-        print(f"Character Stats:\nHealth: {self.health}\nStrength: {self.strength}\nDexterity: {self.dexterity}\nIntelligence: {self.intelligence}\nFaith: {self.faith}\n")
+        typingPrint(f"Character Stats:\nHealth: {self.health}\nStrength: {self.strength}\nDexterity: {self.dexterity}\nIntelligence: {self.intelligence}\nFaith: {self.faith}\n")
 
     def allocate_stat_points(self):
-       
+        while self.allocate_points > 0:
+            typingPrint(f"Points left to allocate: {self.allocate_points}")
+            time.sleep(2)
+            print("Please Allocate your points (health, strength, dexterity, intelligence, faith)")
+            time.sleep(2)
+            stat = input("Which stat would you like improve? ").lower()
+            points = int(input("How many points? "))
+
+            if points > self.allocate_points:
+               typingPrint("You dont have enough points.")
+               continue
+
+            if stat == "health":
+               self.health += points * 10
+            elif stat == "strength":
+               self.strength += points
+            elif stat == "dexterity":
+               self.dexterity += points
+            elif stat == "intelligence":
+               self.intelligence += points
+            elif stat == "faith":
+               self.faith += points
+            else:
+               print("Invalid Stat. Please try again.")
+               continue
+
+            self.allocate_points -= points
+            self.display_stats()
+
         
         
 
