@@ -41,10 +41,12 @@ def main():
     try:
 
         print("Fantasy Adventure: Demo")
-        option = input("Would you like to start the game (y/n)? ").lower
-        option_answer = True
-        while option_answer == True:
+        while True:
+            option = input("Would you like to start the game (y/n)? ").lower()
             if option == "y":
+
+                os.system('cls' if os.name == 'nt' else 'clear')
+
                 print()
                 print()
 
@@ -119,7 +121,7 @@ def main():
                 print()
                 print()
 
-
+                break  # Exit the loop once the game starts
 
                 option_answer = False
             elif option == "n":
