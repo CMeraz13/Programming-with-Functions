@@ -80,29 +80,21 @@ def main():
                 typingPrint("\nStrength:") 
                 time.sleep(2)
                 typingPrint("\nStrength is one of the stats that will determine how much 'Physical Damage'")
-                time.sleep(2)
-                typingPrint("\nyour character will do and how much 'Physical Resistances' protect you from 'Physical Damage'.")
                 print()
                 time.sleep(2)
                 typingPrint("\nDexterity:")
                 time.sleep(2)
                 typingPrint("\nDexterity is the second of the stats that will determine how much 'Physical Damage'")
                 time.sleep(2)
-                typingPrint("\nyour character will do and how much 'Physical Resistances' protect you from 'Physical Damage'.")
-                time.sleep(2)
                 print()
                 typingPrint("\nIntelligence:")
                 time.sleep(2)
                 typingPrint("\nIntelligences is one of the stats that will determine how much 'Magic Damage'")
                 time.sleep(2)
-                typingPrint("\nyour character will do and how much 'Magic Resistance' will protect you from 'Magic Damage'.")
-                time.sleep(2)
                 print()
                 typingPrint("\nFaith:")
                 time.sleep(2)
                 typingPrint("\nFaith is the stat that will determine how much 'Holy Damage'")
-                time.sleep(2)
-                typingPrint("\nyour character will do and how much 'Holy Resistance' will protect you from 'Holy Damage'.")
                 time.sleep(2)
                 print()
                 time.sleep(2)
@@ -113,8 +105,13 @@ def main():
 
                 player_char.allocate_stat_points()
 
-                print("great")
+                typingPrint("\nGreat! Now your character will need a name.")
                 print()
+                character_name = input("Please enter a character name: ")
+
+                print()
+
+                typingPrint(f"\n{character_name}")
 
                 player_char.display_stats()
                 
@@ -139,7 +136,7 @@ def main():
             else:
                print("Error! Not an option, please try again.")
 
-
+    
 
 
 
@@ -169,7 +166,7 @@ class Character:
             time.sleep(2)
             typingPrint("\nPlease Allocate your points (health, strength, dexterity, intelligence, faith)")
             time.sleep(2)
-            stat = input("Which stat would you like improve? ").lower()
+            stat = input("\nWhich stat would you like improve? ").lower()
             points = int(input("How many points? "))
 
             if points > self.allocate_points:
@@ -192,6 +189,10 @@ class Character:
 
             self.allocate_points -= points
             self.display_stats()
+
+            os.system('cls' if os.name == 'nt' else 'clear')
+    
+
 
         
         
