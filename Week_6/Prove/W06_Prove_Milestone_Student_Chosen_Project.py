@@ -136,7 +136,7 @@ def main():
             else:
                print("Error! Not an option, please try again.")
 
-    
+
 
 
 
@@ -193,7 +193,24 @@ class Character:
             os.system('cls' if os.name == 'nt' else 'clear')
     
 
+def beginning_story():
+    situation = 1,2,3,4,5
+    situation.random()
 
+    if situation == 1:
+        typingPrint("\nYou enter the tavern, heads turn in your direction.")
+        typingPrint("\nYou head towards a board full of requests of jobs needed to be done.")
+        typingPrint("\nGrabbing a sheet off the board you walk over to the counter, placing down infront of")
+        typingPrint("\nthe attended. She looks up at you and asks you to fill out a form before you headout.")
+    elif situation == 2:
+        
+        print()
+    elif situation == 3:
+        print()
+    elif situation == 4:
+        print()
+    else:
+       print()
         
         
 
