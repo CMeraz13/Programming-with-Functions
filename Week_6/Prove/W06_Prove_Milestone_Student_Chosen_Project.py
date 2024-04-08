@@ -246,37 +246,66 @@ def beginning_story():
 
 def encounters():
    
-    encounters = 1,2,3,4,5,6,7,8,9,10
-    encounters.random()
-    if encounters == 1:
+    encounter_options = 1,2,3,4,5,6,7,8,9,10
+    encounter = random.choice(encounter_options)
+    if encounter == 1:
        typingPrint("\nWalking inside the dungeon, you feel an eerie gust of wind. Walking deeper, you step into a small room. Inside you find")
-       typingPrint("\nsleeping goblins, as you try to step as")
-    elif encounters == 2:
-        typingPrint("\n")
-    elif encounters == 3:
+       typingPrint("\nsleeping goblins, as you try to step as forwards you feel something gently scrape the ground.")
+       typingPrint("\nThe room of goblins begin to shift, your foot stops, the goblins snore and groan back to sleep. This could be dangerous.")
+       goblin_encounter = input("Try to quietly tiptoe around? (y/n) ")
+       if goblin_encounter.lower() == 'y':
+            success = roll_for_success(player_char, 'dexterity')
+            if success:
+                typingPrint("\nYour feet, glide around the scattered items and creatures.")
+                typingPrint("\nBefore you know it, your back gently presses against the wooden door.")
+                typingPrint("\nYou slip inside, gently closing and locking the door behind you. Taking a deep breath you continue on your way.")
+                typingPrint("\nYou successfully sneaked past the goblin!")
+            else:
+                typingPrint("\nYou stumble and wake the goblin!")
+    elif encounter == 2:
+        typingPrint("\nWalking down a long hallway, you see some debris blocking a doorway. Behind the debris you see a small shimmering lights.")
+        typingPrint("\nYou turn to look down both sides of the hallway to see if there are any dangers awaiting you.")
+        typingPrint("\nRubbing your hands together you begin to clear out the debris.")
+        typingPrint("\nIts stuck, you will have to use a lot of strength to remove it.")
+    elif encounter == 3:
        typingPrint("\n")
-    elif encounters == 4:
+    elif encounter == 4:
        typingPrint("\n")
-    elif encounters == 5:
+    elif encounter == 5:
        typingPrint("\n")
-    elif encounters == 6:
+    elif encounter == 6:
        typingPrint("\n")
-    elif encounters == 7:
+    elif encounter == 7:
        typingPrint("\n")
-    elif encounters == 8:
+    elif encounter == 8:
        typingPrint("\n")
-    elif encounters == 9:
+    elif encounter == 9:
        typingPrint("\n")
     else:
        typingPrint("\n")
 
-def roll_for_success(required_stat):
+# Function called Roll for Success to see if character will succeed in an action
+def roll_for_success(character,required_stat):
    
-    stat = ["strength", "dexterity","intelligence","faith"]
-    required_stat = stat
-    
-    
-    typingPrint("\n")
+    if hasattr(character, required_stat):
+        required_value = getattr(character, required_stat)
+    else:
+        print(f"Error: '{required_stat}' is not a valid stat.")
+        return False
+
+    # Simulate a roll, for simplicity let's say it's between 1 and 20
+    roll = random.randint(1, 20)
+
+    # Showing what the player rolled and what was required
+    print(f"Rolled: {roll}, Required: {required_value}")
+
+    # Compare the roll to the required stat value
+    if roll <= required_value:
+        print("Success!")
+        return True
+    else:
+        print("Failed.")
+        return False
         
         
 
