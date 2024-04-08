@@ -242,6 +242,41 @@ def beginning_story():
        typingPrint("\nYou grab the knife that was prepared for you, you ventured it.")
        typingPrint("\nYou hope your instincts will keep you alive.")
        typingPrint("\nYou hope...")
+
+
+def encounters():
+   
+    encounters = 1,2,3,4,5,6,7,8,9,10
+    encounters.random()
+    if encounters == 1:
+       typingPrint("\nWalking inside the dungeon, you feel an eerie gust of wind. Walking deeper, you step into a small room. Inside you find")
+       typingPrint("\nsleeping goblins, as you try to step as")
+    elif encounters == 2:
+        typingPrint("\n")
+    elif encounters == 3:
+       typingPrint("\n")
+    elif encounters == 4:
+       typingPrint("\n")
+    elif encounters == 5:
+       typingPrint("\n")
+    elif encounters == 6:
+       typingPrint("\n")
+    elif encounters == 7:
+       typingPrint("\n")
+    elif encounters == 8:
+       typingPrint("\n")
+    elif encounters == 9:
+       typingPrint("\n")
+    else:
+       typingPrint("\n")
+
+def roll_for_success(required_stat):
+   
+    stat = ["strength", "dexterity","intelligence","faith"]
+    required_stat = stat
+    
+    
+    typingPrint("\n")
         
         
 

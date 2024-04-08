@@ -39,7 +39,7 @@ CSE 111 Proposal for a Student Chosen Program
     Character Creation Function (Helps the user create a character)     done
     Stat Function (Used to affect what the character can do(Will be used with the Roll Function))   done
     Situtaion Function (Used to randomly give Situtaions)
-    Beginning Function (Used to randomly give a new begining to each run)
+    Beginning Function (Used to randomly give a new begining to each run)    done
 
 
     (Remember also that it's hard to test functions that get user input
