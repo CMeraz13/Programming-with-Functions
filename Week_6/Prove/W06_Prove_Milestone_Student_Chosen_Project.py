@@ -235,7 +235,13 @@ def beginning_story():
         typingPrint("\nYou hope you're knowledge will be able to help you escape.")
         typingPrint("\nYou hope...")
     else:
-       typingPrint("\n")
+       typingPrint("\nYou walked through the woods for a few hours. You dont want to admit it to yourself, nor to the creatures of the forest.")
+       typingPrint("\nThe day started out fine, you had decided to learn how to be a hunter; to live off of the land. Your group ventured into the ")
+       typingPrint("\nforest, your mind ended up wandering. Before you knew it, you were lost, your group gone. After heading in a random direction")
+       typingPrint("\nyou found thick stone doors, hidden behind moss and vines. Pushing them in, a cold chill rushed past you, a rumbling rang out.")
+       typingPrint("\nYou grab the knife that was prepared for you, you ventured it.")
+       typingPrint("\nYou hope your instincts will keep you alive.")
+       typingPrint("\nYou hope...")
         
         
 
