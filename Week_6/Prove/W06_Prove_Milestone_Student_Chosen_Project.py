@@ -286,11 +286,19 @@ def encounters():
         if debris_encounter.lower() == "y":
             success = roll_for_success(Character, 'strength')
             if success:
-                typingPrint("\n")
+                typingPrint("\nYou dig your heels down, using your whole body to lift the debris out of the way.")
+                typingPrint("\nYou lift the debris, plopping down next to the doorway, walking through the door you find a small room.")
+                typingPrint("\nIn the small you find a table and some old chairs. At the other end of the room you find another door.")
+                typingPrint("\nWalking through it you find a small corridor, leading to to your right. You step in, walking down a corridor once more.")
+                typingPrint("\nYou succeeded removing the debris!")
             else:
-                typingPrint("\n")
+                typingPrint("\nYou dig your heels down, your stuggle to push the debris out of the way.")
+                typingPrint("\nYour foot slips and you fall down, the debris unmoved and now a sore bump on your behind.")
+                typingPrint("\nYou failed to remove the debris.")
+                Character(self.health - 10)
         else:
-            typingPrint("\n")
+            typingPrint("\nYou turn, continuing down the corridor, deaming it not worth it to try and waste energy on debris.")
+            typingPrint("\nYou head down, hoping to find a way out sooner rather than later.")
 
     elif encounter == 3:
        typingPrint("\n")
