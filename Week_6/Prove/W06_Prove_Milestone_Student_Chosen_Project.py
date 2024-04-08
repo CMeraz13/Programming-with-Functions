@@ -249,24 +249,49 @@ def encounters():
     encounter_options = 1,2,3,4,5,6,7,8,9,10
     encounter = random.choice(encounter_options)
     if encounter == 1:
-       typingPrint("\nWalking inside the dungeon, you feel an eerie gust of wind. Walking deeper, you step into a small room. Inside you find")
-       typingPrint("\nsleeping goblins, as you try to step as forwards you feel something gently scrape the ground.")
-       typingPrint("\nThe room of goblins begin to shift, your foot stops, the goblins snore and groan back to sleep. This could be dangerous.")
-       goblin_encounter = input("Try to quietly tiptoe around? (y/n) ")
-       if goblin_encounter.lower() == 'y':
-            success = roll_for_success(player_char, 'dexterity')
+        typingPrint("\nWalking inside the dungeon, you feel an eerie gust of wind. Walking deeper, you step into a small room. Inside you find")
+        typingPrint("\nsleeping goblins, as you try to step as forwards you feel something gently scrape the ground.")
+        typingPrint("\nThe room of goblins begin to shift, your foot stops, the goblins snore and groan back to sleep. This could be dangerous.")
+        print()
+        goblin_encounter = input("Try to quietly tiptoe around? (y/n) ")
+        print()
+        if goblin_encounter.lower() == 'y':
+            success = roll_for_success(Character, 'dexterity')
             if success:
                 typingPrint("\nYour feet, glide around the scattered items and creatures.")
                 typingPrint("\nBefore you know it, your back gently presses against the wooden door.")
                 typingPrint("\nYou slip inside, gently closing and locking the door behind you. Taking a deep breath you continue on your way.")
-                typingPrint("\nYou successfully sneaked past the goblin!")
+                typingPrint("\nYou successfully sneaked past the goblins!")
             else:
-                typingPrint("\nYou stumble and wake the goblin!")
+                typingPrint("\nYour feet, try to glide around the scattered items and creatures.")
+                typingPrint("\nYou stumble, slamming down on a table, launching items and goblins into the air.")
+                typingPrint("\nThe clattering, and scretching filled the room. Quickly standing up, you look around the room.")
+                typingPrint("\nYellow Beady eyes stare back at you. Devilish grins smile back at you. ")
+                typingPrint("\nYou failed, and woke the goblins!")
+                Character(self.health - 30)
+                typingPrint("\nYou slam on the door, your body filled with scratches and cuts.")
+                typingPrint("\nYou take 30 damage.")
+        else:
+            typingPrint("\nYou slowly step out of the room, quietly closing the door.")
+            typingPrint("\nYou choose to continue down the long corridor ahead of you.")          
     elif encounter == 2:
         typingPrint("\nWalking down a long hallway, you see some debris blocking a doorway. Behind the debris you see a small shimmering lights.")
         typingPrint("\nYou turn to look down both sides of the hallway to see if there are any dangers awaiting you.")
-        typingPrint("\nRubbing your hands together you begin to clear out the debris.")
+        typingPrint("\nRubbing your hands together you begin to clear out the debris. You feel something lodged, you try again and still its lodged.")
         typingPrint("\nIts stuck, you will have to use a lot of strength to remove it.")
+        print()
+        debris_encounter = input("Do you wish to try and dislodge the stuck debris? (y/n) ")
+        print()
+
+        if debris_encounter.lower() == "y":
+            success = roll_for_success(Character, 'strength')
+            if success:
+                typingPrint("\n")
+            else:
+                typingPrint("\n")
+        else:
+            typingPrint("\n")
+
     elif encounter == 3:
        typingPrint("\n")
     elif encounter == 4:
