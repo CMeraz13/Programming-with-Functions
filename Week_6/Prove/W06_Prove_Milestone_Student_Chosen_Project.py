@@ -201,16 +201,41 @@ def beginning_story():
         typingPrint("\nYou enter the tavern, heads turn in your direction.")
         typingPrint("\nYou head towards a board full of requests of jobs needed to be done.")
         typingPrint("\nGrabbing a sheet off the board you walk over to the counter, placing down infront of")
-        typingPrint("\nthe attended. She looks up at you and asks you to fill out a form before you headout.")
+        typingPrint("\nthe attendant. She looks up at you and asks you to fill out a form before you headout.")
+        typingPrint("\nRiding towards the  dungeon, you feel your dagger bounce as you ride along.")
+        typingPrint("\nYou hope that it will be enough to keep you alive.")
+        typingPrint("\nYou hope...")
     elif situation == 2:
-        
-        print()
+        typingPrint("\nThe wagon shook hard with each bump in the road, suddenly awaking you.")
+        typingPrint("\nYou lift yourself up, looking around, you see thick wooden bars.")
+        typingPrint("\nLifting your hands up to rub your tired eyes, you feel the hands stop abrubly with the rattling of chains.")
+        typingPrint("\nLooking down, you see your hands bound by metal shackles. A Guard slamming on the bars as the wagon stops.")
+        typingPrint("\nStartling you, he looks at you, 'We're here. Stick your hands out!' he bellows.")
+        typingPrint("\nAs you climb out of the wagon, your clothes and armor is handed to you and a dagger.")
+        typingPrint("\nThey inform you that for your punishment you will be handling a dangerous dungeon.")
+        typingPrint("\nYour job is to survive, they say with a wicked grin.")
+        typingPrint("\nYou hope your skills are good enough to keep you alive.")
+        typingPrint("\nYou hope...")
     elif situation == 3:
-        print()
+        typingPrint("\nThe events of the night replay over in your mind as the throbbing from the bump on your head begins again.")
+        typingPrint("\nYou see memories of a great fire, the screams of the villagers, and the smell of blood and smoke.")
+        typingPrint("\nYou recall the memories of creatures attacking your village, you faught bravely against them.")
+        typingPrint("\nAll of a sudden, you remember black as someone or something had struck you in the back of the head.")
+        typingPrint("\nVery few survivors were left, and one was able to recall the direction they were heading.")
+        typingPrint("\nThe omen of a dangerous dungeon fills your mind, in that direction.")
+        typingPrint("\nThey hand you your broken weapon, and your dagger still intact. Grabbing the dagger you set off for the dungeon.")
+        typingPrint("\nYou hope you'll be able to avenge the fallen villagers.")
+        typingPrint("\nYou hope...")
     elif situation == 4:
-        print()
+        typingPrint("\nThe expedition was a struggle to set up. You worked so hard to make it possible. Everyone called you crazy, but here you are.")
+        typingPrint("\nYou wrap bandages around the cut into your leg. The floor collaping under you feet was unexpected. You had expected traps, ")
+        typingPrint("\nand creatures. Ancient text, hoards of treasures, and historical relics, but never the floor collapsing and wiping your team out.")
+        typingPrint("\nYou stand up, grabbing the dagger that the guard held on to, prying it from his grasp. With no way to turn back, you set forward.")
+        typingPrint("\nThe dangerous dungeon that set infront of you. What awaited you, you werent sure anymore.")
+        typingPrint("\nYou hope you're knowledge will be able to help you escape.")
+        typingPrint("\nYou hope...")
     else:
-       print()
+       typingPrint("\n")
         
         
 
