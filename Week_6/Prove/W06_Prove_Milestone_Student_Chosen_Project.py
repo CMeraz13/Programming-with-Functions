@@ -481,12 +481,16 @@ def encounters():
             n_encounters += 1
     elif encounter == 7:
        # Maze
-        typingPrint("\n")
+        typingPrint("\nYou walk pass a doorway before taking a few steps back.")
+        typingPrint("\nYou cant believe your eyes, inside the room you see these large walls, ")
+        typingPrint("\nwalls too large to see over but you see the ceiling so high above them.")
+        typingPrint("\n'It's a Maze!' you think to yourself. Mazes tend to have an exit.")
+        typingPrint("\nMaybe the exit will the way out. ")
         print()
-        encounter = input("")
+        maze_encounter = input("Do you chose to venture into the maze? (y/n) ")
         print()
 
-        if encounter == "y":
+        if maze_encounter== "y":
             success = roll_for_success(Character, 'faith')
             y_encounters += 1
             if success:
