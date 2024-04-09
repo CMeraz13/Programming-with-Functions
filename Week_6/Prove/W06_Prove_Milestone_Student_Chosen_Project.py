@@ -248,6 +248,11 @@ def encounters():
    
     encounter_options = 1,2,3,4,5,6,7,8,9,10
     encounter = random.choice(encounter_options)
+
+    y_encounters = 0
+    n_encounters = 0
+    succeeded_encounters = 0
+    failed_encounters = 0
     
     if encounter == 1:
         # Sleeping Goblins Encounter
@@ -259,11 +264,13 @@ def encounters():
         print()
         if goblin_encounter.lower() == 'y':
             success = roll_for_success(Character, 'dexterity')
+            y_encounters += 1
             if success:
                 typingPrint("\nYour feet, glide around the scattered items and creatures.")
                 typingPrint("\nBefore you know it, your back gently presses against the wooden door.")
                 typingPrint("\nYou slip inside, gently closing and locking the door behind you. Taking a deep breath you continue on your way.")
                 typingPrint("\nYou successfully sneaked past the goblins!")
+                succeeded_encounters += 1
             else:
                 typingPrint("\nYour feet, try to glide around the scattered items and creatures.")
                 typingPrint("\nYou stumble, slamming down on a table, launching items and goblins into the air.")
@@ -273,9 +280,11 @@ def encounters():
                 Character.health - 30
                 typingPrint("\nYou slam on the door, your body filled with scratches and cuts.")
                 typingPrint("\nYou take 30 damage.")
+                failed_encounters += 1
         else:
             typingPrint("\nYou slowly step out of the room, quietly closing the door.")
-            typingPrint("\nYou choose to continue down the long corridor ahead of you.")          
+            typingPrint("\nYou choose to continue down the long corridor ahead of you.")      
+            n_encounters += 1    
     elif encounter == 2:
         # Debris Encounter
         typingPrint("\nWalking down a long hallway, you see some debris blocking a doorway. Behind the debris you see a small shimmering lights.")
@@ -288,20 +297,24 @@ def encounters():
 
         if debris_encounter.lower() == "y":
             success = roll_for_success(Character, 'strength')
+            y_encounters += 1
             if success:
                 typingPrint("\nYou dig your heels down, using your whole body to lift the debris out of the way.")
                 typingPrint("\nYou lift the debris, plopping down next to the doorway, walking through the door you find a small room.")
                 typingPrint("\nIn the small you find a table and some old chairs. At the other end of the room you find another door.")
                 typingPrint("\nWalking through it you find a small corridor, leading to to your right. You step in, walking down a corridor once more.")
                 typingPrint("\nYou succeeded removing the debris!")
+                succeeded_encounters += 1
             else:
                 typingPrint("\nYou dig your heels down, your stuggle to push the debris out of the way.")
                 typingPrint("\nYour foot slips and you fall down, the debris unmoved and now a sore bump on your behind.")
                 typingPrint("\nYou failed to remove the debris.")
                 Character.health - 10
+                failed_encounters += 1
         else:
             typingPrint("\nYou turn, continuing down the corridor, deaming it not worth it to try and waste energy on debris.")
             typingPrint("\nYou head down, hoping to find a way out sooner rather than later.")
+            n_encounters += 1
 
     elif encounter == 3:
         # Intricate Wall Encounter
@@ -314,6 +327,7 @@ def encounters():
 
         if intricate_wall_encounter.lower() == "y":
             success = roll_for_success(Character, 'intelligence')
+            y_encounters += 1
             if success:
                typingPrint("\nLooking at the wall, you push a button you think would correctly correspond to the image")
                typingPrint("\non the wall. As you do the button suddenly sinks in, causing you to flinch.")
@@ -324,6 +338,7 @@ def encounters():
                typingPrint("\nThe dark room suddenly lights up, as torches begin to light doing down the hall.")
                typingPrint("\nWith no where else to go, you press forwards.")
                typingPrint("\nYou successfully decoded the wall!")
+               succeeded_encounters += 1
             else:
                typingPrint("\nYou push the button on the wall with the one you think it corresponds to.")
                typingPrint("\nYou hear harsh clanking behind the wall. As you take a step back, nothing happens.")
@@ -334,31 +349,212 @@ def encounters():
                typingPrint("\nTaking deep breaths, you managed to get on your feet and walk down another long corridor")
                typingPrint("\nYou failed to decode the wall.")
                Character.health - 50
+               failed_encounters += 1
         else:
            typingPrint("\nYou turn from the wall, not wanting to risk the dangers.")
            typingPrint("\nYou continue down the long corridor, hoping to find some sort of exit.")
            typingPrint("\nIf not, at the very least something that wont test your intelligence.")
+           n_encounters += 1
+
     elif encounter == 4:
        # Alter
-       typingPrint("\n")
+        typingPrint("\nWalking down the Corridor you find two large wooden doors. With golden words inscripted on the walls.")
+        typingPrint("\nYou can't understand the inscriptions, but decide to try and open the doors anyway.")
+        typingPrint("\nInside you see a large room with circular pillars, torches lining the walls. In the center")
+        typingPrint("\nyou see, an alter. Walking up to it, you look around, rows of pews facing the center. ")
+        typingPrint("\nAbove you, is a large trompe l'oeil, the image looking like a God watching down on you.")
+        typingPrint("\nYou feel an eerie feeling, but when you arrive to the Alter you feel compelled to pray")
+        typingPrint("\nto the God above you.")
+        print()
+        alter_encounter = input("Would you like to kneel and pray? (y/n) ")
+        print()
+
+        if alter_encounter == "y":
+            success = roll_for_success(Character, 'faith')
+            y_encounters += 1
+            if success:
+                typingPrint("\nYou kneel before the alter, praying to the God above your head.")
+                typingPrint("\nYou feel a small ray of light hit the alter, a warm sensation inside.")
+                typingPrint("\nThe alter begins to rumble. As it rumbles a small golden chalice appears.")
+                typingPrint("\nTaking a sip of the liquid inside you feel warm and stronger.")
+                Character.health + 50
+                typingPrint("\nYour faith has proven you worthy!")
+                typingPrint("\nExiting the room, you find another long corridor.")
+                succeeded_encounters += 1
+            else:
+                typingPrint("\nNothing happens.")
+                typingPrint("\nYou stand and begin walking away, feeling as if the God is watching you.")
+                typingPrint("\nYour faith has failed you in your time of need.")
+                typingPrint("\nYou walk through the door and find another long corridor.")
+                failed_encounters += 1
+        else:
+            typingPrint("\nYou find a door on the other side of the room. You decide its best not to tempt")
+            typingPrint("\nany God or Devil or whatever rules this place.")
+            typingPrint("\nOpening the doors you find another corridor leading you down intp the path.")
+            n_encounters += 1
+
     elif encounter == 5:
-       # Oger Lair
-       typingPrint("\n")
+       # Ogre Lair
+        typingPrint("\nWalking down the corridor you find a large cave opening. Inside you feel")
+        typingPrint("\na small gust of wind. It could be an exit or it could lead into danger.")
+        typingPrint("\nVenturing in, you stumble across a large trunk sized arm. Following it to the body")
+        typingPrint("\nyou find two large eyes peering back at you. The small gust of wind hitting you in the face.")
+        typingPrint("\nAs you jump back the creature doesnt move, it appears to be asleep. Your hand reaches for your")
+        typingPrint("\nDagger, sliding it out of it's sheath.")
+        print()
+        ogre_encounter = input("Do you wish to fight the sleeping Ogre? (y/n) ")
+        print()
+
+        if ogre_encounter == "y":
+            success = roll_for_success(Character, 'strength')
+            y_encounters += 1
+            if success:
+                typingPrint("\nYou dash forwards, jumping into the air plunging your dagger deep into")
+                typingPrint("\nits neck, slicing down. The large orge roars in pain as it's suddenly awaken")
+                typingPrint("\nfrom it's slumber. You quickly dash fowards stabbing at its eye.")
+                typingPrint("\nA short battle ensues but you managed to put down the Ogre.")
+                Character.health - 20
+                typingPrint("\nYou managed to kill the Ogre!")
+                typingPrint("\nWalking deeper into the cave you come across a door, pushing it open")
+                typingPrint("\nyou enter another long corridor. You chose to walk down it.")
+                succeeded_encounters += 1
+            else:
+                typingPrint("\nYou dash forwards, slashing the Ogre's neck. The cut was shallow.")
+                typingPrint("\nThe Ogre roars, awaken suddenly from its slumber. You quickly")
+                typingPrint("\n dash forwards again, stabbing it in its eye.")
+                typingPrint("\nA long battle ensues but you finally managed to put down the Ogre")
+                typingPrint("\nnot before taking some serious damage.")
+                typingPrint("\nYou failed to kill the Ogre quickly.")
+                Character.health - 70
+                typingPrint("\nLimping to the back of the cave you come across a door.")
+                typingPrint("\nPushing it open, you enter another long corridor.")
+                typingPrint("\nYou chose to walk down it, hoping for an exit.")
+                failed_encounters += 1
+        else:
+            typingPrint("\nYou slowly back up, walking back into the corridor.")
+            typingPrint("\nCarefully walking down the corridor before finding a safe distance")
+            typingPrint("\nto start running. 'How did an Ogre get there you think to yourself?' ")
+            typingPrint("\nas you continue down the corridor.")
+            n_encounters += 1
+
     elif encounter == 6:
        # Cells with skeletons
-       typingPrint("\n")
+        typingPrint("\nFinding a door you open it to find some stairs leading down a dark stairway.")
+        typingPrint("\nYou walk down the stairs and see a bunch of small empty metal cells.")
+        typingPrint("\nLooking around you see the cells have a few skeletons but nothing more.")
+        typingPrint("\nSuddenly the rattling of bones startles you.")
+        typingPrint("\nSkeletons suddenly start arising from their dark slumber.")
+        typingPrint("\nYou see as they begin to stand a door on the other side, it could be a way out.")
+        print()
+        encounter = input("Do you wish to fight them and reach the other side? (y/n) ")
+        print()
+
+        if encounter == "y":
+            success = roll_for_success(Character, 'dexterity')
+            y_encounters += 1
+            if success:
+                typingPrint("\nYou brandish your dagger, rushing in and attacking the skeletons.")
+                typingPrint("\nYou dagger breaking the weakened skulls, and before long")
+                typingPrint("\nyou managed to defeat the skeletons but not before taking some hits.")
+                typingPrint("\nYou walk past the your broken boned enemies and walk up to the door.")
+                typingPrint("\nYou defeated the Skeletons!")
+                Character.health - 20
+                typingPrint("\nPushing the door open you find yourself in another corridor. You ")
+                typingPrint("\nbeing walking down in hopes for an exit.")
+                succeeded_encounters += 1
+            else:
+                typingPrint("\nYou brandish your dagger, rushing in and attacking the skeletons.")
+                typingPrint("\nYour dagger stiking the Skeletons, but didnt manage to break their skulls.")
+                typingPrint("\nYour blade having not been as effective, you managed to strike one down.")
+                typingPrint("\nAfter a long battle you stand above your defeated enemies.")
+                typingPrint("\nYou took a good anount of damage, as you walk towards the doors.")
+                typingPrint("\nYou failed to defeat the Skeletons quickly enough.")
+                Character.health - 60
+                typingPrint("\nPushing the door open you find yourself in another corridor. You ")
+                typingPrint("\nbeing walking down in hopes for an exit.")
+                failed_encounters += 1
+        else:
+            typingPrint("\nYou turn tail and run up the stairs. The rattling of bones chasing after you.")
+            typingPrint("\nReaching the top of the stairs you slam the door shut, locking it as the ")
+            typingPrint("\nSkeletons pound on the door. You sprint down the corridor not letting those ")
+            typingPrint("\nSkeletons find you if they break the door down.")
+            n_encounters += 1
     elif encounter == 7:
        # Maze
-       typingPrint("\n")
+        typingPrint("\n")
+        print()
+        encounter = input("")
+        print()
+
+        if encounter == "y":
+            success = roll_for_success(Character, 'faith')
+            y_encounters += 1
+            if success:
+                typingPrint("\n")
+                succeeded_encounters += 1
+            else:
+                typingPrint("\n")
+                failed_encounters += 1
+        else:
+            typingPrint("\n")
+            n_encounters
     elif encounter == 8:
        # Invisible steps in the river
-       typingPrint("\n")
+        typingPrint("\n")
+        print()
+        encounter = input("")
+        print()
+
+        if encounter == "y":
+            success = roll_for_success(Character, 'faith')
+            y_encounters += 1
+            if success:
+                typingPrint("\n")
+                succeeded_encounters += 1
+            else:
+                typingPrint("\n")
+                failed_encounters += 1
+        else:
+            typingPrint("\n")
+            n_encounters += 1
     elif encounter == 9:
        # Cultists
-       typingPrint("\n")
+        typingPrint("\n")
+        print()
+        encounter = input("")
+        print()
+
+        if encounter == "y":
+            success = roll_for_success(Character, 'faith')
+            y_encounters += 1
+            if success:
+                typingPrint("\n")
+                succeeded_encounters += 1
+            else:
+                typingPrint("\n")
+                failed_encounters += 1
+        else:
+            typingPrint("\n")
+            n_encounters += 1
     else:
        # The lone Commander Knight
-       typingPrint("\n")
+        typingPrint("\n")
+        print()
+        encounter = input("")
+        print()
+
+        if encounter == "y":
+            success = roll_for_success(Character, 'faith')
+            y_encounters += 1
+            if success:
+                typingPrint("\n")
+                succeeded_encounters += 1
+            else:
+                typingPrint("\n")
+                failed_encounters += 1
+        else:
+            typingPrint("\n")
+            n_encounters += 1
 
 # Function called Roll for Success to see if character will succeed in an action
 def roll_for_success(character,required_stat):
