@@ -250,6 +250,7 @@ def encounters():
     encounter = random.choice(encounter_options)
     
     if encounter == 1:
+        # Sleeping Goblins Encounter
         typingPrint("\nWalking inside the dungeon, you feel an eerie gust of wind. Walking deeper, you step into a small room. Inside you find")
         typingPrint("\nsleeping goblins, as you try to step as forwards you feel something gently scrape the ground.")
         typingPrint("\nThe room of goblins begin to shift, your foot stops, the goblins snore and groan back to sleep. This could be dangerous.")
@@ -269,13 +270,14 @@ def encounters():
                 typingPrint("\nThe clattering, and scretching filled the room. Quickly standing up, you look around the room.")
                 typingPrint("\nYellow Beady eyes stare back at you. Devilish grins smile back at you. ")
                 typingPrint("\nYou failed, and woke the goblins!")
-                Character(self.health - 30)
+                Character.health - 30
                 typingPrint("\nYou slam on the door, your body filled with scratches and cuts.")
                 typingPrint("\nYou take 30 damage.")
         else:
             typingPrint("\nYou slowly step out of the room, quietly closing the door.")
             typingPrint("\nYou choose to continue down the long corridor ahead of you.")          
     elif encounter == 2:
+        # Debris Encounter
         typingPrint("\nWalking down a long hallway, you see some debris blocking a doorway. Behind the debris you see a small shimmering lights.")
         typingPrint("\nYou turn to look down both sides of the hallway to see if there are any dangers awaiting you.")
         typingPrint("\nRubbing your hands together you begin to clear out the debris. You feel something lodged, you try again and still its lodged.")
@@ -296,12 +298,13 @@ def encounters():
                 typingPrint("\nYou dig your heels down, your stuggle to push the debris out of the way.")
                 typingPrint("\nYour foot slips and you fall down, the debris unmoved and now a sore bump on your behind.")
                 typingPrint("\nYou failed to remove the debris.")
-                Character(self.health - 10)
+                Character.health - 10
         else:
             typingPrint("\nYou turn, continuing down the corridor, deaming it not worth it to try and waste energy on debris.")
             typingPrint("\nYou head down, hoping to find a way out sooner rather than later.")
 
     elif encounter == 3:
+        # Intricate Wall Encounter
         typingPrint("\nYou come up to a large wall with intricate designs. To the left you see buttons corresponding")
         typingPrint("\nto the designs on the walls. To your right in another long corridor.")
         typingPrint("\nYou deduce that the buttons when pressed in the correct order will reveal a hidden secret.")
@@ -330,7 +333,7 @@ def encounters():
                typingPrint("\nYou managed to grab onto a ledge and pull yourself up.")
                typingPrint("\nTaking deep breaths, you managed to get on your feet and walk down another long corridor")
                typingPrint("\nYou failed to decode the wall.")
-               Character(self.health - 50)   
+               Character.health - 50
         else:
            typingPrint("\nYou turn from the wall, not wanting to risk the dangers.")
            typingPrint("\nYou continue down the long corridor, hoping to find some sort of exit.")
