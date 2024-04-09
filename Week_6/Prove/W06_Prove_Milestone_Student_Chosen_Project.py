@@ -248,6 +248,7 @@ def encounters():
    
     encounter_options = 1,2,3,4,5,6,7,8,9,10
     encounter = random.choice(encounter_options)
+    
     if encounter == 1:
         typingPrint("\nWalking inside the dungeon, you feel an eerie gust of wind. Walking deeper, you step into a small room. Inside you find")
         typingPrint("\nsleeping goblins, as you try to step as forwards you feel something gently scrape the ground.")
@@ -301,20 +302,59 @@ def encounters():
             typingPrint("\nYou head down, hoping to find a way out sooner rather than later.")
 
     elif encounter == 3:
-       typingPrint("\n")
+        typingPrint("\nYou come up to a large wall with intricate designs. To the left you see buttons corresponding")
+        typingPrint("\nto the designs on the walls. To your right in another long corridor.")
+        typingPrint("\nYou deduce that the buttons when pressed in the correct order will reveal a hidden secret.")
+        print()
+        intricate_wall_encounter = input("Would you like to try and solve the puzzle? (y/n) ")
+        print()
+
+        if intricate_wall_encounter.lower() == "y":
+            success = roll_for_success(Character, 'intelligence')
+            if success:
+               typingPrint("\nLooking at the wall, you push a button you think would correctly correspond to the image")
+               typingPrint("\non the wall. As you do the button suddenly sinks in, causing you to flinch.")
+               typingPrint("\nTo your relief nothing happens. You continue to push buttons carefully to each image.")
+               typingPrint("\nEach button sinks, clicking into place, and as the last one sinks in the wall begins to shake.")
+               typingPrint("\nYou take a step back, as the wall begins to slowly rotate, revealing a hidden path.")
+               typingPrint("\nStepping inside, the wall closes behind you. You hear the clicking from the buttons being undone.")
+               typingPrint("\nThe dark room suddenly lights up, as torches begin to light doing down the hall.")
+               typingPrint("\nWith no where else to go, you press forwards.")
+               typingPrint("\nYou successfully decoded the wall!")
+            else:
+               typingPrint("\nYou push the button on the wall with the one you think it corresponds to.")
+               typingPrint("\nYou hear harsh clanking behind the wall. As you take a step back, nothing happens.")
+               typingPrint("\nStepping closer, you reach for another button. Before your fingers reach the buttons")
+               typingPrint("\nyou feel weightless. The floor opened up below you and you begin to fall.")
+               typingPrint("\nYou land in a small river violently thrashing you around.")
+               typingPrint("\nYou managed to grab onto a ledge and pull yourself up.")
+               typingPrint("\nTaking deep breaths, you managed to get on your feet and walk down another long corridor")
+               typingPrint("\nYou failed to decode the wall.")
+               Character(self.health - 50)   
+        else:
+           typingPrint("\nYou turn from the wall, not wanting to risk the dangers.")
+           typingPrint("\nYou continue down the long corridor, hoping to find some sort of exit.")
+           typingPrint("\nIf not, at the very least something that wont test your intelligence.")
     elif encounter == 4:
+       # Alter
        typingPrint("\n")
     elif encounter == 5:
+       # Oger Lair
        typingPrint("\n")
     elif encounter == 6:
+       # Cells with skeletons
        typingPrint("\n")
     elif encounter == 7:
+       # Maze
        typingPrint("\n")
     elif encounter == 8:
+       # Invisible steps in the river
        typingPrint("\n")
     elif encounter == 9:
+       # Cultists
        typingPrint("\n")
     else:
+       # The lone Commander Knight
        typingPrint("\n")
 
 # Function called Roll for Success to see if character will succeed in an action
@@ -328,6 +368,7 @@ def roll_for_success(character,required_stat):
 
     # Simulate a roll, for simplicity let's say it's between 1 and 20
     roll = random.randint(1, 20)
+    encounter_difficulty_roll = random.randomint(1,15)
 
     # Showing what the player rolled and what was required
     print(f"Rolled: {roll}, Required: {required_value}")
