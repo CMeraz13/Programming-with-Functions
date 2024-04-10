@@ -1,17 +1,20 @@
 import pytest
-from W06_Prove_Milestone_Student_Chosen_Project import roll_for_success  # Adjust the import path as needed
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
 
-class MockCharacter:
-    def __init__(self, dexterity):
-        self.dexterity = dexterity
+# Assume your_module.roll_for_success is the function you want to test
+from W06_Prove_Milestone_Student_Chosen_Project import roll_for_success
 
-@pytest.mark.parametrize("roll, dexterity, expected", [
-    (1, 5, True),  # Test case where roll is less than dexterity, expecting success
-    (20, 10, False),  # Test case where roll is higher than dexterity, expecting failure
-    (10, 10, True),  # Edge case where roll equals dexterity, expecting success
-])
-def test_roll_for_success(roll, dexterity, expected):
-    character = MockCharacter(dexterity=dexterity)
-    with patch("your_module.random.randint", return_value=roll):
-        assert roll_for_success(character, "dexterity") == expected
+@pytest.fixture
+def mock_character():
+    # Create a mock character with a dexterity attribute
+    character = MagicMock()
+    character.dexterity = 10
+    return character
+
+@patch("your_module.random.randint", return_value=10)
+def test_roll_for_success_success(mock_randint, mock_character):
+    assert roll_for_success(mock_character, 'dexterity') is True
+
+@patch("your_module.random.randint", return_value=11)
+def test_roll_for_success_failure(mock_randint, mock_character):
+    assert roll_for_success(mock_character, 'dexterity') is False
