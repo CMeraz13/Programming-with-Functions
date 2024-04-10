@@ -491,7 +491,7 @@ def encounters():
         print()
 
         if maze_encounter== "y":
-            success = roll_for_success(Character, 'faith')
+            success = roll_for_success(Character, 'intelligence')
             y_encounters += 1
             if success:
                 typingPrint("\n")
