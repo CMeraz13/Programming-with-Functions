@@ -35,7 +35,7 @@ CSE 111 Proposal for a Student Chosen Program
     Functions that get user input and print results are important and do
     useful work but are not easily reusable.)
 
-    Roll function (Used to get a random number to see if you pass checks) 
+    Roll function (Used to get a random number to see if you pass checks) done
     Character Creation Function (Helps the user create a character)     done
     Stat Function (Used to affect what the character can do(Will be used with the Roll Function))   done
     Situtaion Function (Used to randomly give Situtaions)
