@@ -571,7 +571,7 @@ def roll_for_success(character,required_stat):
 
     # Simulate a roll, for simplicity let's say it's between 1 and 20
     roll = random.randint(1, 20)
-    encounter_difficulty_roll = random.randomint(1,15)
+    #encounter_difficulty_roll = random.randomint(1,15)
 
     # Showing what the player rolled and what was required
     print(f"Rolled: {roll}, Required: {required_value}")
@@ -592,5 +592,5 @@ def clearScreen():
     
 
 
-
-main()
+if __name__ == "__main__":
+    main()
