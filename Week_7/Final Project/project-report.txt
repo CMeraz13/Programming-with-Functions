@@ -38,5 +38,5 @@ Time Spent
 2024-05-03     2.0      Editing	the main function
 2024-06-03     2.0      Figuring out story writing
 2024-08-03     7.0      Working on Character Functions
-2024-09-03     8.0      Story Functions
+2024-09-03     8.0      WritingStory Functions
 2024-10-03     9.1      Pytests and finishing up the project
