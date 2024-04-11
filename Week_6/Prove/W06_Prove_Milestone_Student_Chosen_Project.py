@@ -27,16 +27,17 @@ W06 Prove Milestone: Student Chosen Program:
 
 """
 
-import math, random, time, sys, os
-from datetime import datetime
+# Importanted all of the functions needed throughout the code
+import random, time, sys, os
 
+# Function used to have the text print out letter by letter
 def typingPrint(text):
   for character in text:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0)
+    time.sleep(0.05)
 
-
+# Function used to randomly tell the beginning story
 def beginning_story():
 
     situation = random.choice([1, 2, 3, 4, 5])
@@ -92,9 +93,10 @@ def beginning_story():
        typingPrint("\nYou hope...")
        print()
     
-
+# The class used to create the character
 class Character:
 
+    # Function used to determine the stats.
     def __init__(self, health = 100, strength = 1, dexterity = 1, intelligence = 1, faith = 1):
        self.health = health
        self.strength = strength
@@ -103,6 +105,7 @@ class Character:
        self.faith = faith
        self.allocate_points = 60
 
+    # Function used to display the character stats
     def display_stats(self):
         stats_str = "Character Stats:\n"
         stats_str += f"Health: {self.health}\n"
@@ -112,6 +115,7 @@ class Character:
         stats_str += f"Faith: {self.faith}\n"
         return stats_str
 
+    # Function used to allocate stats
     def allocate_stat_points(self):
         while self.allocate_points > 0:
             typingPrint(f"Points left to allocate: {self.allocate_points}")
@@ -165,17 +169,19 @@ class Character:
 
             os.system('cls' if os.name == 'nt' else 'clear')
     
+    # Function used for calculating damage taken
     def take_damage(self, damage):
         # Method to reduce character's health by the specified amount of damage
         self.health -= damage
         if self.health < 0:
             self.health = 0  # Ensure health doesn't go below 0
 
+    # Function used for calculating health healed
     def health_healed(self, heal):
         # Function used to heal the character's health by the specified amount
         self.health += heal
 
-
+# Main function telling the story
 def main():
     try:
 
@@ -201,40 +207,40 @@ def main():
                 #print(display_standard_stats)
 
                 typingPrint("\nEach character has 5 individual stats.")
-                time.sleep(0)
+                time.sleep(2)
                 typingPrint("\nEach individual stat will affect what your character can and cant do.")
-                time.sleep(0)
+                time.sleep(2)
                 print()
                 typingPrint("\nHealth:")
-                time.sleep(0)
+                time.sleep(2)
                 typingPrint("\nHealth indicates how many 'Hit Points' or 'HP' your character has before you get a game over.")
-                time.sleep(0)
+                time.sleep(2)
                 typingPrint("\nIf your 'HP' reach 0, its 'Game Over'.")
-                time.sleep(0)
+                time.sleep(2)
                 typingPrint("\nDuring the game you will encounter Enemies who will cause you to take damage or get hit")
-                time.sleep(0)
+                time.sleep(2)
                 typingPrint("\nSo be sure to always be careful or you will reach 'Game Over'!")
-                time.sleep(0)
+                time.sleep(2)
                 print()
                 typingPrint("\nStrength:") 
-                time.sleep(0)
+                time.sleep(2)
                 typingPrint("\nStrength is one of the stats that will determine where physical strength is required to succeed.")
                 print()
-                time.sleep(0)
+                time.sleep(2)
                 typingPrint("\nDexterity:")
-                time.sleep(0)
+                time.sleep(2)
                 typingPrint("\nDexterity is the second of the stats that will determine where your dexterity is required to succeed.")
-                time.sleep(0)
+                time.sleep(2)
                 print()
                 typingPrint("\nIntelligence:")
-                time.sleep(0)
+                time.sleep(2)
                 typingPrint("\nIntelligences is one of the stats that will determine where intelligence is required to succeed.")
-                time.sleep(0)
+                time.sleep(2)
                 print()
                 typingPrint("\nFaith:")
-                time.sleep(0)
+                time.sleep(2)
                 typingPrint("\nFaith is the stat that will determine the encounters where faith is required to succeed.")
-                time.sleep(0)
+                time.sleep(2)
                 print()
                 print()
                 time.sleep(2)
@@ -323,7 +329,7 @@ def main():
 
     print()
 
-
+# Function used to randomly give the player encounters
 def encounters(player):
    
     encounter_options = list(range(1, 11))
@@ -878,6 +884,7 @@ def character_health(health, encounters_result):
     else:
         return "You Died", "Thank you for playing Fantasy Adventure!"
 
+# Function used to clear the screen
 def clearScreen():
   os.system("clear")
     
