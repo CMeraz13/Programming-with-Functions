@@ -34,7 +34,7 @@ def typingPrint(text):
   for character in text:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.05)
+    time.sleep(0)
 
 
 def beginning_story():
@@ -93,7 +93,87 @@ def beginning_story():
        print()
     
 
+class Character:
 
+    def __init__(self, health = 100, strength = 1, dexterity = 1, intelligence = 1, faith = 1):
+       self.health = health
+       self.strength = strength
+       self.dexterity = dexterity
+       self.intelligence = intelligence
+       self.faith = faith
+       self.allocate_points = 60
+
+    def display_stats(self):
+        stats_str = "Character Stats:\n"
+        stats_str += f"Health: {self.health}\n"
+        stats_str += f"Strength: {self.strength}\n"
+        stats_str += f"Dexterity: {self.dexterity}\n"
+        stats_str += f"Intelligence: {self.intelligence}\n"
+        stats_str += f"Faith: {self.faith}\n"
+        return stats_str
+
+    def allocate_stat_points(self):
+        while self.allocate_points > 0:
+            typingPrint(f"Points left to allocate: {self.allocate_points}")
+            time.sleep(2)
+            typingPrint("\nPlease Allocate your points (health, strength, dexterity, intelligence, faith)")
+            time.sleep(2)
+            stat = input("\nWhich stat would you like improve? ").lower()
+            points = int(input("How many points? "))
+            print()
+
+            if points > self.allocate_points:
+               typingPrint("You dont have enough points.")
+               continue
+
+            if stat == "health":
+                if (self.health + (points *  10 )) > 300:
+                   print("Maximum alloted points for health stat is 16!")
+                else:
+                    self.health += points * 10
+                    self.allocate_points -= points
+            elif stat == "strength":
+                if (self.strength + points) > 20:
+                    print("Maximum alloted points per stat is 19!")
+                else:
+                    self.strength += points
+                    self.allocate_points -= points
+            elif stat == "dexterity":
+                if (self.dexterity + points) > 20:
+                   print("Maximum alloted points per stat is 19!")
+                else:
+                    self.dexterity += points
+                    self.allocate_points -= points
+            elif stat == "intelligence":
+                if (self.intelligence + points) > 20:
+                   print("Maximum alloted points per stat is 19!")
+                else:
+                   self.intelligence += points
+                   self.allocate_points -= points
+            elif stat == "faith":
+                if (self.faith + points) > 20:
+                   print("Maximum alloted points per stat is 19!")
+                else:
+                   self.faith += points
+                   self.allocate_points -= points
+            else:
+               print("Invalid Stat. Please try again.")
+               continue
+            print()
+            print(self.display_stats())
+            time.sleep(3)
+
+            os.system('cls' if os.name == 'nt' else 'clear')
+    
+    def take_damage(self, damage):
+        # Method to reduce character's health by the specified amount of damage
+        self.health -= damage
+        if self.health < 0:
+            self.health = 0  # Ensure health doesn't go below 0
+
+    def health_healed(self, heal):
+        # Function used to heal the character's health by the specified amount
+        self.health += heal
 
 
 def main():
@@ -131,7 +211,7 @@ def main():
                 time.sleep(0)
                 typingPrint("\nIf your 'HP' reach 0, its 'Game Over'.")
                 time.sleep(0)
-                typingPrint("\nDuring the game you will encounter Enemies who will cause you to take damange or get hit")
+                typingPrint("\nDuring the game you will encounter Enemies who will cause you to take damage or get hit")
                 time.sleep(0)
                 typingPrint("\nSo be sure to always be careful or you will reach 'Game Over'!")
                 time.sleep(0)
@@ -200,11 +280,10 @@ def main():
         beginning_story()
         print()
         print()
-        encounters()
+        encounters(player_char)
 
-        player_hp = Character()
 
-        if player_hp.health > 0:
+        if player_char.health > 0:
             typingPrint("\nYou stumble out of a hole in the corridor, the bright sun blinding you.")
             typingPrint("\nLooking around you find yourself outside, away from the horrors of the dungeon.")
             typingPrint("\ncleaning yourslef up, you head in a direction, hoping to find civilization.")
@@ -215,7 +294,7 @@ def main():
             print()
             print()
 
-        elif player_hp.health == 0:
+        elif player_char.health == 0:
             typingPrint("\nYou died, left in that horrid dungeon with no one ever finding you.")
             typingPrint("\nWell, until the next poor soul stumbles across the dungeon.")
             typingPrint("\nWe hope they do, otherwise the fun will stop.")
@@ -244,75 +323,8 @@ def main():
 
     print()
 
-pass
 
-class Character:
-
-    def __init__(self, health = 100, strength = 1, dexterity = 1, intelligence = 1, faith = 1):
-       self.health = health
-       self.strength = strength
-       self.dexterity = dexterity
-       self.intelligence = intelligence
-       self.faith = faith
-       self.allocate_points = 73
-
-    def display_stats(self):
-        stats_str = "Character Stats:\n"
-        stats_str += f"Health: {self.health}\n"
-        stats_str += f"Strength: {self.strength}\n"
-        stats_str += f"Dexterity: {self.dexterity}\n"
-        stats_str += f"Intelligence: {self.intelligence}\n"
-        stats_str += f"Faith: {self.faith}\n"
-        return stats_str
-
-    def allocate_stat_points(self):
-        while self.allocate_points > 0:
-            typingPrint(f"Points left to allocate: {self.allocate_points}")
-            time.sleep(2)
-            typingPrint("\nPlease Allocate your points (health, strength, dexterity, intelligence, faith)")
-            time.sleep(2)
-            stat = input("\nWhich stat would you like improve? ").lower()
-            points = int(input("How many points? "))
-            print()
-
-            if points > self.allocate_points:
-               typingPrint("You dont have enough points.")
-               continue
-
-            if stat == "health":
-               self.health += points * 10
-            elif stat == "strength":
-               self.strength += points
-            elif stat == "dexterity":
-               self.dexterity += points
-            elif stat == "intelligence":
-               self.intelligence += points
-            elif stat == "faith":
-               self.faith += points
-            else:
-               print("Invalid Stat. Please try again.")
-               continue
-            print()
-            self.allocate_points -= points
-            print(self.display_stats())
-            time.sleep(3)
-
-            os.system('cls' if os.name == 'nt' else 'clear')
-    
-    def take_damage(self, damage):
-        # Method to reduce character's health by the specified amount of damage
-        self.health -= damage
-        if self.health < 0:
-            self.health = 0  # Ensure health doesn't go below 0
-
-    def health_healed(self, heal):
-        # Function used to heal the character's health by the specified amount
-        self.health += heal
-    
-    
-
-
-def encounters():
+def encounters(player):
    
     encounter_options = list(range(1, 11))
 
@@ -320,8 +332,6 @@ def encounters():
     n_encounters = 0
     succeeded_encounters = 0
     failed_encounters = 0
-    
-    player = Character()
 
     while encounter_options:
 
@@ -364,6 +374,7 @@ def encounters():
                         typingPrint("\nYellow Beady eyes stare back at you. Devilish grins smile back at you. ")
                         typingPrint("\nYou failed, and woke the goblins!")
                         player.take_damage(30)
+                        typingPrint(f"\nYour current health: {player.health}")
                         typingPrint("\nYou slam on the door, your body filled with scratches and cuts.")
                         typingPrint("\nYou take 30 damage.")
                         typingPrint("\nYou continue down the long corridor in front of you, trying to get")
@@ -379,8 +390,7 @@ def encounters():
                     break
                 else:
                     print("Please enter 'y' or 'n'.")
-            # Display player's health after each encounter
-            typingPrint(f"\nYour current health: {player.health}")
+                # Display player's health after each encounter
                 
         elif encounter == 2:
             # Debris Encounter
@@ -411,6 +421,7 @@ def encounters():
                         typingPrint("\nYou took 10 damage!")
                         print()
                         player.take_damage(10)
+                        typingPrint(f"\nYour current health: {player.health}")
                         failed_encounters += 1
                     break
                 elif debris_encounter == "n":
@@ -421,7 +432,6 @@ def encounters():
                     break
                 else:
                     print("Please enter 'y' or 'n'.")
-            typingPrint(f"\nYour current health: {player.health}")
 
         elif encounter == 3:
             # Intricate Wall Encounter
@@ -460,6 +470,7 @@ def encounters():
                         typingPrint("\nYou failed to decode the wall.")
                         typingPrint("\nYou took 50 damage!")
                         player.take_damage(50)
+                        typingPrint(f"\nYour current health: {player.health}")
                         failed_encounters += 1
                         print()
                     break
@@ -472,7 +483,6 @@ def encounters():
                     break
                 else:
                     print("Please enter 'y' or 'n'.")
-            typingPrint(f"\nYour current health: {player.health}")
 
         elif encounter == 4:
         # Alter
@@ -498,6 +508,7 @@ def encounters():
                         typingPrint("\nThe alter begins to rumble. As it rumbles a small golden chalice appears.")
                         typingPrint("\nTaking a sip of the liquid inside you feel warm and stronger.")
                         player.health_healed(50)
+                        typingPrint(f"\nYour current health: {player.health}")
                         typingPrint("\nYour faith has proven you worthy!")
                         typingPrint("\nYou healed 50 Health Points!")
                         typingPrint("\nExiting the room, you find another long corridor.")
@@ -520,7 +531,6 @@ def encounters():
                     break
                 else:
                     print("Please enter 'y' or 'n'.")
-            typingPrint(f"\nYour current health: {player.health}")
 
         elif encounter == 5:
         # Ogre Lair
@@ -546,6 +556,7 @@ def encounters():
                         typingPrint("\nA short battle ensues but you managed to put down the Ogre.")
                         typingPrint("\nYou took 20 damage!")
                         player.take_damage(20)
+                        typingPrint(f"\nYour current health: {player.health}")
                         typingPrint("\nYou managed to kill the Ogre!")
                         typingPrint("\nWalking deeper into the cave you come across a door, pushing it open")
                         typingPrint("\nyou enter another long corridor. You chose to walk down it.")
@@ -560,6 +571,7 @@ def encounters():
                         typingPrint("\nYou failed to kill the Ogre quickly.")
                         typingPrint("\nYou took 70 damage!")
                         player.take_damage(70)
+                        typingPrint(f"\nYour current health: {player.health}")
                         typingPrint("\nLimping to the back of the cave you come across a door.")
                         typingPrint("\nPushing it open, you enter another long corridor.")
                         typingPrint("\nYou chose to walk down it, hoping for an exit.")
@@ -576,7 +588,6 @@ def encounters():
                     break
                 else:
                     print("Please enter 'y' or 'n'.")
-            typingPrint(f"\nYour current health: {player.health}")
 
         elif encounter == 6:
         # Cells with skeletons
@@ -603,6 +614,7 @@ def encounters():
                         typingPrint("\nYou defeated the Skeletons!")
                         typingPrint("\nYou took 20 damage!")
                         player.take_damage(20)
+                        typingPrint(f"\nYour current health: {player.health}")
                         typingPrint("\nPushing the door open you find yourself in another corridor. You ")
                         typingPrint("\nbeing walking down in hopes for an exit.")
                         print()
@@ -616,6 +628,7 @@ def encounters():
                         typingPrint("\nYou failed to defeat the Skeletons quickly enough.")
                         typingPrint("\nYou took 60 damage!")
                         player.take_damage(60)
+                        typingPrint(f"\nYour current health: {player.health}")
                         typingPrint("\nPushing the door open you find yourself in another corridor. You ")
                         typingPrint("\nbeing walking down in hopes for an exit.")
                         print()
@@ -631,7 +644,6 @@ def encounters():
                     break
                 else:
                     print("Please enter 'y' or 'n'.")
-            typingPrint(f"\nYour current health: {player.health}")
 
         elif encounter == 7:
         # Maze
@@ -714,6 +726,7 @@ def encounters():
                         typingPrint("\nYou took 20 damage!")
                         print()
                         player.take_damage(20)
+                        typingPrint(f"\nYour current health: {player.health}")
                         failed_encounters += 1
                     break
                 elif raging_river_encounter == "n":
@@ -724,7 +737,6 @@ def encounters():
                     break
                 else:
                     print("Please enter 'y' or 'n'.")
-            typingPrint(f"\nYour current health: {player.health}")
 
         elif encounter == 9:
         # Cultists
@@ -757,6 +769,7 @@ def encounters():
                         typingPrint("\nYou took 40 damage!")
                         print()
                         player.take_damage(40)
+                        typingPrint(f"\nYour current health: {player.health}")
                         failed_encounters += 1
                     break
                 elif cultists_encounter == "n":
@@ -767,7 +780,6 @@ def encounters():
                     break
                 else:
                     print("Please enter 'y' or 'n'.")
-            typingPrint(f"\nYour current health: {player.health}")
                 
         else:
         # The lone Commander Knight
@@ -804,9 +816,11 @@ def encounters():
                         typingPrint("\nThe battle left you with many wounds, you tended to. Walking behind the throne you see the door.")
                         typingPrint("\nWalking through it you find youself in another corridor.")
                         typingPrint("\nYou failed to kill the Lone Knight quickly.")
+                        typingPrint("You should have done your daily exercise!")
                         typingPrint("\nYou took 100 damage!")
                         print()
                         player.take_damage(100)
+                        typingPrint(f"\nYour current health: {player.health}")
                         failed_encounters += 1
                     break
                 elif lone_knight_encounter == "n":
@@ -818,9 +832,8 @@ def encounters():
                     break
                 else:
                     print("Please enter 'y' or 'n'.") 
-            typingPrint(f"\nYour current health: {player.health}")
 
-        break
+    
     print()
     print("Encounters completed!")
     print("Total successful encounters:", succeeded_encounters)
@@ -833,7 +846,7 @@ def encounters():
 def roll_for_success(character,required_stat):
    
     # Dictionary to map the stat value to the bonus
-    stat_bonus = {10:0, 11:0, 12:1, 13:1, 14:2, 15:2, 16:3,17:3, 18:4, 19:4, 20:5}
+    stat_bonus = { 1:-5, 2:-4, 3:-4, 4:-3, 5:-3, 6:-2, 7:-2, 8:-1, 9:-1, 10:0, 11:0, 12:1, 13:1, 14:2, 15:2, 16:3,17:3, 18:4, 19:4, 20:5}
 
     required_value = random.randint(1, 20)
 
@@ -847,6 +860,8 @@ def roll_for_success(character,required_stat):
     print(f"Rolled: {roll}, Required: {required_value} Stat Bonus: +{bonus}")
 
     modified_roll = roll + bonus
+
+    print(modified_roll)
 
     # Compare the roll to the required stat value
     if modified_roll >= required_value:
