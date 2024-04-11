@@ -1,5 +1,5 @@
 import pytest
-from W06_Prove_Milestone_Student_Chosen_Project import Character  # Update 'your_module_name' with the actual module name
+from W06_Prove_Milestone_Student_Chosen_Project import Character
 
 @pytest.fixture
 def character_with_health(request):

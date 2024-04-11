@@ -1,5 +1,5 @@
 import pytest
-from W06_Prove_Milestone_Student_Chosen_Project import character_health  # Adjust the import path as necessary
+from W06_Prove_Milestone_Student_Chosen_Project import character_health  
 
 @pytest.mark.parametrize("health,encounters_result,expected", [
     (10, "You fought bravely.", ("You fought bravely.")),
